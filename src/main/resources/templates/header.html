@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<header>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+</header>
+
+<body>
+<div th:fragment="header">
+    <div align="center">
+        <a th:href="@{/}"><IMG SRC="/images/logo.png" ALT="some text" WIDTH=600 HEIGHT=100></a>
+    </div>
+    <div class="naviBar">
+        <div class="dropdown">
+        <button class="menuButton">Przepisy</button>
+        <div class="dropdownContent">
+            <a class="menuLink" th:href="@{/przepis/dodaj}">Dodaj nowy przepis</a>
+        </div>
+        </div>
+        <div class="dropdown">
+            <button class="menuButton">Menu 2</button>
+            <div class="dropdownContent">
+                <a th:href="@{/}" class="menuLink">Podmenu 1</a>
+                <a th:href="@{/}" class="menuLink">Pod</a>
+                <a th:href="@{/}" class="menuLink">AAAAAAAAAAAAA</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="menuButton">Menu 3</button>
+            <div class="dropdownContent">
+                <a th:href="@{/}" class="menuLink">Podmenu 1</a>
+                <a th:href="@{/}" class="menuLink">Pod</a>
+                <a th:href="@{/}" class="menuLink">AAAAAAAAAAAAA</a>
+            </div>
+        </div>
+        <form class="searchBar" th:action="@{/przepis/szukaj}" th:method="post">
+            <input type="text" name="searchText"/>
+            <button type="submit">Szukaj</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

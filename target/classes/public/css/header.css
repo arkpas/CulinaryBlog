@@ -1,0 +1,53 @@
+.naviBar {
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px;
+    border-color: #22b14d;
+    border-style: solid;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.searchBar {
+    display: inline-block;
+    position: relative;
+    float: right;
+    padding: 15px;
+}
+
+.menuButton {
+    text-decoration: none;
+    background-color: #22b14d;
+    color: white;
+    border-width: 0px;
+    padding: 15px 30px;
+}
+
+.dropdown {
+    display: inline-block;
+    postion: relative;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #22b14d;
+    z-index: 1;
+    padding: 5px 0px;
+}
+
+.menuLink {
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-width: 0px;
+    padding: 5px 10px;
+}
+
+.menuLink:hover {
+    background-color: red;
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}

@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/dodaj}">
+        <b>Nazwa dania </b> <input type="text" th:field="*{name}"/>
+        <br/>
+        <b>Składniki </b> <br/> <textarea rows=10 cols="20" th:field="*{ingredients}"></textarea>
+        <br/>
+        <b>Instrukcje </b> <br/> <textarea rows=15 cols="40" th:field="*{instruction}"></textarea>
+        <br/>
+        <button type="submit">Dodaj przepis</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+<b><h3>Wyniki wyszukiwania:</h3></b>
+<p th:if="${recipes.isEmpty()}">Nic nie znaleziono :(</p>
+<div th:each="recipe : ${recipes}">
+    <a th:href="@{'/przepis/' + ${recipe.name}}" th:text="${recipe.name}"></a>
+</div>
+</body>
+</html>
