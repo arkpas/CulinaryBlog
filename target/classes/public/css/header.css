@@ -1,5 +1,5 @@
 .naviBar {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     padding: 5px;
     border-color: #22b14d;
@@ -20,7 +20,12 @@
     background-color: #22b14d;
     color: white;
     border-width: 0px;
+    border-radius: 5px;
     padding: 15px 30px;
+    font-weight: bold;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 15px;
+    width: 150px;
 }
 
 .dropdown {
@@ -31,17 +36,23 @@
 .dropdownContent {
     display: none;
     position: absolute;
-    background-color: #22b14d;
     z-index: 1;
     padding: 5px 0px;
+    width: 150px;
 }
 
 .menuLink {
     display: block;
     text-decoration: none;
     color: white;
+    background-color: #22b14d;
     border-width: 0px;
+    border-radius: 5px;
     padding: 5px 10px;
+    margin: 2px 0px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+
 }
 
 .menuLink:hover {

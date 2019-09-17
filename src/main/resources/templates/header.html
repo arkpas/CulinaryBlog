@@ -11,25 +11,27 @@
     </div>
     <div class="naviBar">
         <div class="dropdown">
-        <button class="menuButton">Przepisy</button>
+        <button class="menuButton">PRZEPISY</button>
         <div class="dropdownContent">
-            <a class="menuLink" th:href="@{/przepis/dodaj}">Dodaj nowy przepis</a>
+            <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ NOWY</a>
         </div>
         </div>
         <div class="dropdown">
-            <button class="menuButton">Menu 2</button>
+            <button class="menuButton">PORA DNIA</button>
             <div class="dropdownContent">
-                <a th:href="@{/}" class="menuLink">Podmenu 1</a>
-                <a th:href="@{/}" class="menuLink">Pod</a>
-                <a th:href="@{/}" class="menuLink">AAAAAAAAAAAAA</a>
+                <a th:each="timeCattegory : ${timeCattegories}" th:text="${#strings.toUpperCase(timeCattegory.name)}" th:href="@{'/kategoria/' + ${timeCattegory.name}}" class="menuLink"></a>
             </div>
         </div>
         <div class="dropdown">
-            <button class="menuButton">Menu 3</button>
+            <button class="menuButton">DIETY</button>
             <div class="dropdownContent">
-                <a th:href="@{/}" class="menuLink">Podmenu 1</a>
-                <a th:href="@{/}" class="menuLink">Pod</a>
-                <a th:href="@{/}" class="menuLink">AAAAAAAAAAAAA</a>
+                <a th:each="dietCattegory : ${dietCattegories}" th:text="${#strings.toUpperCase(dietCattegory.name)}" th:href="@{'/kategoria/' + ${dietCattegory.name}}" class="menuLink"></a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="menuButton">DANIA</button>
+            <div class="dropdownContent">
+                <a th:each="mealCattegory : ${mealCattegories}" th:text="${#strings.toUpperCase(mealCattegory.name)}" th:href="@{'/kategoria/' + ${mealCattegory.name}}" class="menuLink"></a>
             </div>
         </div>
         <form class="searchBar" th:action="@{/przepis/szukaj}" th:method="post">
@@ -38,6 +40,5 @@
         </form>
     </div>
 </div>
-
 </body>
 </html>

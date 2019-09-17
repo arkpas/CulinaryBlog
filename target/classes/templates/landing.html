@@ -13,5 +13,6 @@
     <div th:each="recipe : ${recipes}">
         <a th:href="@{'/przepis/' + ${recipe.name}}" th:text="${recipe.name}"></a>
     </div>
+    <input type="file" name="file" />
 </body>
 </html>

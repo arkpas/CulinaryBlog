@@ -11,6 +11,8 @@
 <body>
 <div th:object="${recipe}">
     <h1><p th:text="*{name}"/></h1>
+    <p>Kategorie:</p> <i th:each="cattegory : ${recipe.cattegories}" th:text="${cattegory.cattegory.name} + ' '"></i>
+    <br/>
     <p>Składniki:</p>
     <div th:each="ingredient : *{ingredients}">
         <li th:text="${ingredient}"></li>

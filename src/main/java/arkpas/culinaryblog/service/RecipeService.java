@@ -46,4 +46,5 @@ public class RecipeService {
     public List<Recipe> getRecipes () {
         return recipeRepository.getRecipes();
     }
+
 }

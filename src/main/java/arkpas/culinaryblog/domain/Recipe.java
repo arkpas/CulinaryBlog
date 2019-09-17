@@ -2,7 +2,9 @@ package arkpas.culinaryblog.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -13,8 +15,10 @@ public class Recipe {
     private String name;
     private String ingredients;
     private String instruction;
-    @OneToMany (mappedBy = "recipe")
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany (mappedBy = "recipe", targetEntity = Comment.class)
+    private Set<Comment> comments = new HashSet<>();
+    @OneToMany (mappedBy = "recipe", targetEntity = RecipeCattegory.class)
+    private Set<RecipeCattegory> cattegories = new HashSet<>();
 
     public Recipe () {
 
@@ -32,8 +36,11 @@ public class Recipe {
     public String getInstruction() {
         return instruction;
     }
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
+    }
+    public Set<RecipeCattegory> getCattegories() {
+        return cattegories;
     }
 
     public void setId(int id) {
