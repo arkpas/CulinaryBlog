@@ -23,15 +23,18 @@ public class RecipeService {
 
 
 
+
     public Recipe getRecipe (int id) {
         return recipeRepository.getRecipe(id);
     }
 
     public Recipe getRecipe (String name) {
         return recipeRepository.getRecipe(name);
+
     }
 
     public void addRecipe (Recipe recipe) {
+        recipe.setDateTime();
         recipeRepository.saveRecipe(recipe);
     }
 

@@ -1,20 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <header>
     <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
 </header>
 
 <body>
-<div th:fragment="header">
+<div th:fragment="header" class="header">
     <div align="center">
         <a th:href="@{/}"><IMG SRC="/images/logo.png" ALT="some text" WIDTH=600 HEIGHT=100></a>
     </div>
     <div class="naviBar">
-        <div class="dropdown">
-        <button class="menuButton">PRZEPISY</button>
-        <div class="dropdownContent">
-            <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ NOWY</a>
-        </div>
+        <div class="dropdown" sec:authorize="isAuthenticated()">
+            <button class="menuButton">PRZEPISY</button>
+            <div class="dropdownContent">
+                <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ NOWY</a>
+            </div>
         </div>
         <div class="dropdown">
             <button class="menuButton">PORA DNIA</button>
@@ -33,6 +34,9 @@
             <div class="dropdownContent">
                 <a th:each="mealCattegory : ${mealCattegories}" th:text="${#strings.toUpperCase(mealCattegory.name)}" th:href="@{'/kategoria/' + ${mealCattegory.name}}" class="menuLink"></a>
             </div>
+        </div>
+        <div class="dropdown" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}"><button class="menuButton">WYLOGUJ</button></a>
         </div>
         <form class="searchBar" th:action="@{/przepis/szukaj}" th:method="post">
             <input type="text" name="searchText"/>

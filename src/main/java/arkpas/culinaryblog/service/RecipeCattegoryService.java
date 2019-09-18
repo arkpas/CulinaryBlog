@@ -32,10 +32,14 @@ public class RecipeCattegoryService {
         recipeCattegory.setCattegory(cattegory);
         recipeCattegoryRepository.saveRecipeCattegory(recipeCattegory);
     }
+    public void addRecipeCattegories (Recipe recipe, int... cattegories) {
+        for (int i = 0; i < cattegories.length; i++) {
+            this.addRecipeCattegory(recipe, cattegories[i]);
+        }
+    }
 
     public void addRecipeCattegory (Recipe recipe, int cattegoryId) {
         RecipeCattegory recipeCattegory = new RecipeCattegory();
-
         Cattegory cattegory = cattegoryService.getCattegory(cattegoryId);
         if (cattegory != null && recipe != null) {
             recipeCattegory.setRecipe(recipe);

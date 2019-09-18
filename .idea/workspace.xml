@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5a5c98d4-6a9f-4f25-9683-522765d14cb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeCattegoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeCattegoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/style.css" afterDir="false" />
@@ -17,15 +19,18 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/recipePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/recipePage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/FileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeCattegoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeCattegoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/public/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/landing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/recipeForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/recipeForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/recipePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/recipePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/2logo.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

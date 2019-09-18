@@ -10,14 +10,19 @@
 
 <body>
 <div th:object="${recipe}">
-    <h1><p th:text="*{name}"/></h1>
+    <div align="center">
+        <h1><p th:text="*{name}"/></h1>
+        <IMG th:src="@{*{imageLink}}" ALT="some text" WIDTH=700 HEIGHT=700>
+    </div>
     <p>Kategorie:</p> <i th:each="cattegory : ${recipe.cattegories}" th:text="${cattegory.cattegory.name} + ' '"></i>
     <br/>
-    <p>Składniki:</p>
-    <div th:each="ingredient : *{ingredients}">
-        <li th:text="${ingredient}"></li>
-    </div>
-    <p th:text="*{instruction}"/>
+    <p>Tagi</p> <i th:each="tag : ${recipe.tags}" th:text="${tag.tagName} + ' '"></i>
+    <br/>
+    <h3>Składniki:</h3>
+    <pre th:text="*{ingredients}"></pre>
+    <br/>
+    <h3>Przygotowanie:</h3>
+    <pre th:text="*{instruction}"></pre>
     <br/>
     <h1>Komentarze</h1>
     <form th:object="${comment}" th:method="post" th:action="@{/przepis/dodajKomentarz}">

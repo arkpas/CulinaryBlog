@@ -1,6 +1,7 @@
 body {
     width: 1300px;
     margin: 0 auto;
+    margin-top: 180px;
 }
 
 input, textarea {

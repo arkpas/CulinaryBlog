@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+<h2>LOGOWANIE</h2>
+<div class="form">
+    <form th:action="@{/login}" method="post">
+        <p th:if="${error}">Nieprawidłowa nazwa użytkownika lub hasło</p>
+        <div class="field">
+            <label>Nazwa: </label> <input type="text" id="username" name="username" autofocus="autofocus"/>
+        </div>
+        <div class="field">
+            <label>Haslo: </label>  <input type="password" id="password" name="password"/>
+        </div>
+        <div class="field">
+            <button type="submit">Zaloguj</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

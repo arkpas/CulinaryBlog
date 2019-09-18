@@ -7,6 +7,7 @@ import arkpas.culinaryblog.domain.repository.RecipeRepository;
 import arkpas.culinaryblog.service.CattegoryService;
 import arkpas.culinaryblog.service.RecipeCattegoryService;
 import arkpas.culinaryblog.service.RecipeService;
+import arkpas.culinaryblog.service.UserService;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,14 +21,15 @@ public class Starter implements CommandLineRunner {
 
     private RecipeService recipeService;
     private CattegoryService cattegoryService;
-    private RecipeCattegoryService recipeCattegoryService;
+    private UserService userService;
 
     @Autowired
-    public Starter(RecipeService recipeService, CattegoryService cattegoryService, RecipeCattegoryService recipeCattegoryService) {
+    public Starter(RecipeService recipeService, CattegoryService cattegoryService, UserService userService) {
         this.recipeService = recipeService;
         this.cattegoryService = cattegoryService;
-        this.recipeCattegoryService = recipeCattegoryService;
+        this.userService = userService;
     }
+
 
     @Override
     public void run (String[] args) {
@@ -35,7 +37,12 @@ public class Starter implements CommandLineRunner {
         recipe.setIngredients("Jabłko 5 szt \nWoda 2 litry");
         recipe.setInstruction("Ugotuj jabłka w wodzie");
         recipe.setName("Kompot");
+        recipe.setImageLink("https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2019/08/1065779-v-1080x1080.jpg");
         recipeService.addRecipe(recipe);
+
+
+        userService.addUser("arek", "123", "123");
+
 
         createDietCattegories();
         createMealCattegories();
