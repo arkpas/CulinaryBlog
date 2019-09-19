@@ -14,7 +14,7 @@
         <b>Nazwa dania </b> <input type="text" th:field="*{name}"/>
         <br/>
         <b>Tagi</b>
-        <input type="text" name="tags"/>
+        <input type="text" name="tagsString"/>
         <b>Kategoria</b>
         <select name="cattegoryId1" >
             <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>

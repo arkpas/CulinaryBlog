@@ -12,6 +12,8 @@
 <div th:object="${recipe}">
     <div align="center">
         <h1><p th:text="*{name}"/></h1>
+        <a th:href="@{'/przepis/edytuj/' + *{id}}">Edytuj</a>
+        <a th:href="@{'/'}">Usuń</a>
         <IMG th:src="@{*{imageLink}}" ALT="some text" WIDTH=700 HEIGHT=700>
     </div>
     <p>Kategorie:</p> <i th:each="cattegory : ${recipe.cattegories}" th:text="${cattegory.cattegory.name} + ' '"></i>

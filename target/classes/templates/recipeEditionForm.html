@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/edytuj}">
+        <input th:type="hidden" th:field="*{id}" th:value="${recipe.id}"/>
+        <table>
+            <thead>
+                <tr>
+                    <td width="150"></td>
+                    <td width="150"></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Nazwa dania </b></td>
+                    <td><input type="text" th:placeholder="*{name}" th:field="*{name}"/></td>
+                </tr>
+                <tr>
+                    <td><b>Adres do obrazka</b></td>
+                    <td><input type="text" th:placeholder="*{imageLink}" th:field="*{imageLink}"/></td>
+                </tr>
+                <tr>
+                    <td><b>Pora dnia</b></td>
+                    <td>
+                        <select name="timeCattegoryId" >
+                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).TIME}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                            <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Typ diety </b></td>
+                    <td>
+                        <select name="dietCattegoryId" >
+                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).DIET}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                            <option th:each="dietCattegory : ${dietCattegories}" th:value="${dietCattegory.id}" th:text="${dietCattegory.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Typ posiłku </b></td>
+                    <td>
+                        <select name="mealCattegoryId" >
+                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).MEAL}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                            <option th:each="mealCattegory : ${mealCattegories}" th:value="${mealCattegory.id}" th:text="${mealCattegory.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Składniki </b></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea rows=20 cols="40" th:placeholder="*{ingredients}" th:field="*{ingredients}"></textarea></td>
+                </tr>
+                <tr>
+                    <td><b>Instrukcje </b></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><textarea rows=20 cols="120" th:placeholder="*{instruction}" th:field="*{instruction}"></textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Zapisz</button>
+                        <a th:href="@{'/przepis/' + ${recipe.name}}"><button>Anuluj</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class TagRepositoryImpl implements TagRepository {
@@ -22,6 +23,11 @@ public class TagRepositoryImpl implements TagRepository {
     public Tag getTag(String name) {
         //not implemented yet
         return null;
+    }
+
+    @Override
+    public List<Tag> getTags(String name) {
+        return entityManager.createQuery("SELECT t FROM Tag AS t WHERE lower(tagName) = lower(:name)", Tag.class).setParameter("name", name).getResultList();
     }
 
     @Override

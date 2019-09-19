@@ -40,11 +40,13 @@ public class CattegoryRepositoryImpl implements CattegoryRepository {
     }
 
     @Override
+    @Transactional
     public void updateCattegory(Cattegory cattegory) {
         entityManager.merge(cattegory);
     }
 
     @Override
+    @Transactional
     public void removeCattegory(Cattegory cattegory) {
         entityManager.remove(cattegory);
     }

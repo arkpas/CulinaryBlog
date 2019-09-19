@@ -12,9 +12,11 @@
     </div>
     <div class="naviBar">
         <div class="dropdown" sec:authorize="isAuthenticated()">
-            <button class="menuButton">PRZEPISY</button>
+            <button class="menuButton">ZARZĄDZANIE</button>
             <div class="dropdownContent">
-                <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ NOWY</a>
+                <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ PRZEPIS</a>
+                <a class="menuLink" th:href="@{/kategoria/dodaj}">DODAJ KATEGORIĘ</a>
+                <a class="menuLink" th:href="@{/kategoria/modyfikuj}">MODYFIKUJ KATEGORIE</a>
             </div>
         </div>
         <div class="dropdown">

@@ -3,7 +3,7 @@ package arkpas.culinaryblog.utils;
 public enum CattegoryType {
     DIET ("Dieta"),
     TIME ("Pora"),
-    MEAL ("Typ");
+    MEAL ("Danie");
 
     private String name;
 

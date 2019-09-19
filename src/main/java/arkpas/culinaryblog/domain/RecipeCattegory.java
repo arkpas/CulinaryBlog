@@ -8,10 +8,10 @@ public class RecipeCattegory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne (targetEntity = Recipe.class, cascade = CascadeType.ALL)
+    @ManyToOne (targetEntity = Recipe.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn (name = "recipe_id")
     private Recipe recipe;
-    @ManyToOne (targetEntity = Cattegory.class, cascade = CascadeType.ALL)
+    @ManyToOne (targetEntity = Cattegory.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn (name = "cattegory_id")
     private Cattegory cattegory;
 

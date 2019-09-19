@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -75,19 +77,34 @@ public class RecipeController {
         return "recipeForm";
     }
     @RequestMapping(value = "/przepis/dodaj", method = RequestMethod.POST)
-    public String addRecipe (Recipe recipe, int cattegoryId1, int cattegoryId2, int cattegoryId3, String tags) {
+    public String addRecipe (Recipe recipe, int cattegoryId1, int cattegoryId2, int cattegoryId3, String tagsString) {
         recipeService.addRecipe(recipe);
         System.out.println("URL" + recipe.getImageLink());
         recipeCattegoryService.addRecipeCattegories(recipe, cattegoryId1, cattegoryId2, cattegoryId3);
-        tagService.addTags(recipe, tags);
+        tagService.addTags(recipe, tagsString);
         return "redirect:/";
     }
 
     @RequestMapping(value = "/przepis/szukaj", method = RequestMethod.POST)
     public String searchRecipe (String searchText, Model model) {
-        List<Recipe> recipes = recipeService.searchRecipes(searchText);
+        Set<Recipe> recipes = new HashSet<>(recipeService.searchRecipes(searchText));
+        recipes.addAll(tagService.getRecipesByTag(searchText));
         model.addAttribute("recipes", recipes);
         return "searchResults";
+    }
+
+    @RequestMapping(value = "/przepis/edytuj/{recipeId}")
+    public String editRecipe (@PathVariable("recipeId") int recipeId, Model model) {
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        model.addAttribute("recipe", recipe);
+        return "recipeEditionForm";
+    }
+
+    @RequestMapping(value = "/przepis/edytuj", method = RequestMethod.POST)
+    public String editRecipe (Recipe recipe, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId ) {
+        recipeService.updateRecipe(recipe);
+        recipeCattegoryService.updateRecipeCattegories(recipe.getId(), timeCattegoryId, dietCattegoryId, mealCattegoryId);
+        return "redirect:/przepis/" + recipe.getName();
     }
 
 

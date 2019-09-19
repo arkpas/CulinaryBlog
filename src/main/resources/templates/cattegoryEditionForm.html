@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+<form th:object="${cattegory}" th:method="post" th:action="@{'/kategoria/edytuj/' + ${cattegory.id}}">
+    <br>
+    <input type="text" th:field="*{id}" th:value="${cattegory.id}" hidden />
+    <b>Nazwa </b>
+    <input type="text" th:field="*{name}" th:placeholder="*{name}"/>
+    <br/>
+    <b>Typ kategorii</b>
+    <select th:field="*{cattegoryType}" >
+        <option th:value="*{cattegoryType}" th:text="*{cattegoryType.getName()}" selected hidden></option>
+        <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}" ></option>
+    </select>
+    <br/>
+    <a th:href="@{/kategoria/modyfikuj}"><button type="submit">Anuluj</button></a>
+    <button type="submit">Zapisz</button>
+</form>
+</body>
+</html>

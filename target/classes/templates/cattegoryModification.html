@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+    <br/>
+    <script>
+        function confirmRemove() {
+          if (!confirm("Czy na pewno chcesz usunąć tę kategorię?"))
+            return false;
+          else
+            return true;
+        }
+    </script>
+
+    <div align="center">
+        <div style="width: 30%; float:left;">
+            <table title="Pora dnia">
+                <tr>
+                    <th colspan="3">Pora dnia</th>
+                </tr>
+                <tr th:each="cattegory : ${timeCattegories}">
+                    <td><b th:text="${cattegory.name}"></b></td>
+                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 30%; float:left;">
+            <table title="Diety" >
+                <tr>
+                    <th colspan="3">Diety</th>
+                </tr>
+                <tr th:each="cattegory : ${dietCattegories}">
+                    <td><b th:text="${cattegory.name}"></b></td>
+                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 30%; float:left;">
+            <table title="Dania">
+                <tr>
+                    <th colspan="3">Dania</th>
+                </tr>
+                <tr th:each="cattegory : ${mealCattegories}">
+                    <td><b th:text="${cattegory.name}"></b></td>
+                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

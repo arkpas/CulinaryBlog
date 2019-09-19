@@ -1,7 +1,7 @@
 .header {
     width: 1300px;
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     background-color: orange;
     border-radius: 15px;
@@ -27,6 +27,8 @@
 
 .menuButton {
     text-decoration: none;
+    display: block;
+    text-align: center;
     background-color: #22b14d;
     color: white;
     border-width: 0px;
@@ -41,6 +43,7 @@
 .dropdown {
     display: inline-block;
     postion: relative;
+    text-align: center;
 }
 
 .dropdownContent {

@@ -2,10 +2,7 @@ package arkpas.culinaryblog.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Recipe {
@@ -45,10 +42,13 @@ public class Recipe {
         return instruction;
     }
     public Set<Comment> getComments() {
-        return comments;
+        return Collections.unmodifiableSet(comments);
     }
     public Set<RecipeCattegory> getCattegories() {
-        return cattegories;
+        return Collections.unmodifiableSet(cattegories);
+    }
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags);
     }
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -56,9 +56,8 @@ public class Recipe {
     public String getImageLink() {
         return imageLink;
     }
-    public Set<Tag> getTags() {
-        return tags;
-    }
+
+
 
     public void setId(int id) {
         this.id = id;
@@ -72,17 +71,51 @@ public class Recipe {
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+    public void setCattegories(Set<RecipeCattegory> cattegories) {
+        this.cattegories = cattegories;
+    }
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
+    public void setDateTime () {
+        dateTime = LocalDateTime.now();
+    }
 
     public void addComment (Comment comment) {
         comments.add(comment);
     }
-    public void setDateTime () {
-        dateTime = LocalDateTime.now();
+    public void removeComment (Comment comment) {
+        if (comments.contains(comment)) {
+            comments.remove(comment);
+            comment.setRecipe(null);
+        }
+    }
+    public void addRecipeCattegory (RecipeCattegory recipeCattegory) { cattegories.add(recipeCattegory); }
+    public void removeRecipeCattegory (RecipeCattegory recipeCattegory) {
+        if (cattegories.contains(recipeCattegory)) {
+            cattegories.remove(recipeCattegory);
+            recipeCattegory.setRecipe(null);
+        }
+    }
+    public void addTag (Tag tag) { tags.add(tag); }
+    public void removeTag (Tag tag) {
+        if (tags.contains(tag)) {
+            tags.remove(tag);
+            tag.setRecipe(null);
+        }
+    }
+
+    @Override
+    public String toString () {
+        return "Recipe[id=" + id + ", " + name + "]";
     }
 }

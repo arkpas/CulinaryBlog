@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,11 +41,24 @@ public class RecipeService {
     }
 
     public void updateRecipe (Recipe recipe) {
+        if (recipe == null)
+            return;
+
+        Recipe originalRecipe = this.getRecipe(recipe.getId());
+        if (originalRecipe == null)
+            return;
+
+        recipe.setComments(originalRecipe.getComments());
+        recipe.setCattegories(originalRecipe.getCattegories());
+        recipe.setTags(originalRecipe.getTags());
+        recipe.setDateTime(originalRecipe.getDateTime());
+
         recipeRepository.updateRecipe(recipe);
     }
 
-    public List<Recipe> searchRecipes (String searchText) {
-        return recipeRepository.searchRecipes(searchText);
+    public Set<Recipe> searchRecipes (String searchText) {
+        return new HashSet<>(recipeRepository.searchRecipes(searchText));
+
     }
 
     public List<Recipe> getRecipes () {

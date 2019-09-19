@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TagService {
@@ -34,6 +38,15 @@ public class TagService {
             Arrays.stream(tags.split(" ")).filter(s -> s.length() > 0).forEach(s -> this.addTag(recipe, s));
 
     }
+
+    public Set<Recipe> getRecipesByTag (String tag) {
+        List<Tag> tagList = tagRepository.getTags(tag);
+        Set<Recipe> recipes = new HashSet<>();
+        if (!tagList.isEmpty())
+            recipes.addAll(tagList.stream().map(Tag::getRecipe).collect(Collectors.toSet()));
+        return recipes;
+    }
+
     public void updateTag (Tag tag) {
         tagRepository.updateTag(tag);
     }

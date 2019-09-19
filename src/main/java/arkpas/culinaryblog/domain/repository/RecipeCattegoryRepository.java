@@ -8,6 +8,7 @@ public interface RecipeCattegoryRepository {
 
     public RecipeCattegory getRecipeCattegory (int id);
     public List<RecipeCattegory> getRecipeCattegoriesByCattegory (int cattegoryId);
+    public List<RecipeCattegory> getRecipeCattegoriesByRecipe (int recipeId);
     public void saveRecipeCattegory (RecipeCattegory recipeCattegory);
     public void updateRecipeCattegory (RecipeCattegory recipeCattegory);
     public void removeRecipeCattegory (RecipeCattegory recipeCattegory);

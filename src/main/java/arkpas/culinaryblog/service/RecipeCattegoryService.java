@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -15,12 +16,18 @@ public class RecipeCattegoryService {
 
     private RecipeCattegoryRepository recipeCattegoryRepository;
     private CattegoryService cattegoryService;
+    private RecipeService recipeService;
+
 
     @Autowired
-    public RecipeCattegoryService(RecipeCattegoryRepository recipeCattegoryRepository, CattegoryService cattegoryService) {
+    public RecipeCattegoryService(RecipeCattegoryRepository recipeCattegoryRepository, CattegoryService cattegoryService, RecipeService recipeService) {
         this.recipeCattegoryRepository = recipeCattegoryRepository;
         this.cattegoryService = cattegoryService;
+        this.recipeService = recipeService;
     }
+
+
+
 
     public RecipeCattegory getRecipeCattegory (int id) {
         return recipeCattegoryRepository.getRecipeCattegory(id);
@@ -60,7 +67,24 @@ public class RecipeCattegoryService {
     public void updateRecipeCattegory (RecipeCattegory recipeCattegory) {
         recipeCattegoryRepository.updateRecipeCattegory(recipeCattegory);
     }
+
+    public void updateRecipeCattegories(int recipeId, int... cattegoryIds) {
+        deleteRecipeCattegories(recipeId);
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        addRecipeCattegories(recipe, cattegoryIds);
+    }
+
     public void deleteRecipeCattegory (RecipeCattegory recipeCattegory) {
         recipeCattegoryRepository.removeRecipeCattegory(recipeCattegory);
     }
+
+    public void deleteRecipeCattegories (int recipeId) {
+        recipeCattegoryRepository.getRecipeCattegoriesByRecipe(recipeId).forEach(this::deleteRecipeCattegory);
+    }
+
+    public void deleteCattegoryFromRecipes(Cattegory cattegory) {
+        recipeCattegoryRepository.getRecipeCattegoriesByCattegory(cattegory.getId()).forEach(this::deleteRecipeCattegory);
+    }
+
+
 }
