@@ -12,17 +12,20 @@
     <form th:object="${recipe}" th:method="post" th:action="@{/przepis/edytuj}">
         <input th:type="hidden" th:field="*{id}" th:value="${recipe.id}"/>
         <table>
-            <thead>
-                <tr>
-                    <td width="150"></td>
-                    <td width="150"></td>
-                    <td></td>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
                     <td><b>Nazwa dania </b></td>
-                    <td><input type="text" th:placeholder="*{name}" th:field="*{name}"/></td>
+                    <td>
+                        <input type="text" th:placeholder="*{name}" th:field="*{name}"/>
+                        <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Tagi: </b></td>
+                    <td><i th:each="tag : *{tags}" th:text="${tag.tagName} + ' '"></i></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input style="width: 300;" type="text" th:placeholder="${'(wprowadź nowe tagi lub pozostaw puste)'}" th:name="tagsString"/></td>
                 </tr>
                 <tr>
                     <td><b>Adres do obrazka</b></td>
@@ -56,13 +59,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><b>Składniki </b></td>
+                    <td>
+                        <b>Składniki </b>
+                        <i th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></i>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2"><textarea rows=20 cols="40" th:placeholder="*{ingredients}" th:field="*{ingredients}"></textarea></td>
                 </tr>
                 <tr>
-                    <td><b>Instrukcje </b></td>
+                    <td>
+                        <b>Instrukcje </b>
+                        <i th:if="${#fields.hasErrors('instruction')}" th:errors="*{instruction}"></i>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3"><textarea rows=20 cols="120" th:placeholder="*{instruction}" th:field="*{instruction}"></textarea></td>

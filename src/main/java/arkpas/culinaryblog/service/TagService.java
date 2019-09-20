@@ -15,10 +15,12 @@ import java.util.stream.Collectors;
 @Service
 public class TagService {
     private TagRepository tagRepository;
+    private RecipeService recipeService;
 
     @Autowired
-    public TagService(TagRepository tagRepository) {
+    public TagService(TagRepository tagRepository, RecipeService recipeService) {
         this.tagRepository = tagRepository;
+        this.recipeService = recipeService;
     }
 
     public Tag getTag (int id) {
@@ -27,14 +29,17 @@ public class TagService {
     public Tag getTag (String name) {
         return tagRepository.getTag(name);
     }
+
     public void addTag(Recipe recipe, String tagName) {
-        Tag tag = new Tag();
-        tag.setRecipe(recipe);
-        tag.setTagName(tagName);
-        tagRepository.saveTag(tag);
+        if (recipe != null && tagName != null) {
+            Tag tag = new Tag();
+            tag.setTagName(tagName);
+            recipe.addTag(tag);
+            recipeService.updateRecipe(recipe);
+        }
     }
     public void addTags(Recipe recipe, String tags) {
-        if (tags != null)
+        if (tags != null && tags.length() > 0)
             Arrays.stream(tags.split(" ")).filter(s -> s.length() > 0).forEach(s -> this.addTag(recipe, s));
 
     }
@@ -50,6 +55,7 @@ public class TagService {
     public void updateTag (Tag tag) {
         tagRepository.updateTag(tag);
     }
+
     public void deleteTag (Tag tag) {
         tagRepository.removeTag(tag);
     }

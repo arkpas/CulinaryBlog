@@ -50,4 +50,10 @@ public class RecipeRepositoryImpl  implements RecipeRepository {
        entityManager.merge(recipe);
     }
 
+    @Override
+    @Transactional
+    public void removeRecipe(Recipe recipe) {
+        entityManager.remove(recipe);
+    }
+
 }

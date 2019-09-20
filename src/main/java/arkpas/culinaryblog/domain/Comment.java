@@ -10,7 +10,8 @@ public class Comment {
     private int id;
     private String username;
     private String text;
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (targetEntity = Recipe.class)
+    @JoinColumn (name = "recipe_id")
     private Recipe recipe;
 
     public int getId() {

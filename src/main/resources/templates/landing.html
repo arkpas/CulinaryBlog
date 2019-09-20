@@ -9,10 +9,15 @@
 </head>
 
 <body>
-    <b><h3>Ostatnio dodane:</h3></b>
-    <div th:each="recipe : ${recipes}">
-        <h4><a th:href="@{'/przepis/' + ${recipe.name}}" th:text="${recipe.name}"></a></h4>
-        <IMG th:src="@{${recipe.imageLink}}" ALT="some text" WIDTH=300 HEIGHT=300>
+    <div class="mainContainer">
+        <b><h3>Ostatnio dodane:</h3></b>
+        <div class="recipeMiniature" th:each="recipe : ${recipes}">
+            <a class="miniatureLink" th:href="@{'/przepis/' + ${recipe.name}}" th:text="${#strings.toUpperCase(recipe.name)}"></a>
+            <br/>
+            <a th:href="@{'/przepis/' + ${recipe.name}}">
+                <IMG class="miniatureImage" th:src="@{${recipe.imageLink}}" ALT="some text" WIDTH=300 HEIGHT=300>
+            </a>
+        </div>
     </div>
 </body>
 </html>

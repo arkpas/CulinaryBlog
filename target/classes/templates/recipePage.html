@@ -9,16 +9,23 @@
 </head>
 
 <body>
+<script>
+    function confirmRemove() {
+        if(!confirm("Czy na pewno chcesz bezpowrotnie usunąć ten przepis wraz z komentarzami?"))
+            return false;
+        return true;
+    }
+</script>
 <div th:object="${recipe}">
     <div align="center">
         <h1><p th:text="*{name}"/></h1>
         <a th:href="@{'/przepis/edytuj/' + *{id}}">Edytuj</a>
-        <a th:href="@{'/'}">Usuń</a>
+        <a th:href="@{'/przepis/usun/' + *{id}}" onclick="return confirmRemove()">Usuń</a>
         <IMG th:src="@{*{imageLink}}" ALT="some text" WIDTH=700 HEIGHT=700>
     </div>
     <p>Kategorie:</p> <i th:each="cattegory : ${recipe.cattegories}" th:text="${cattegory.cattegory.name} + ' '"></i>
     <br/>
-    <p>Tagi</p> <i th:each="tag : ${recipe.tags}" th:text="${tag.tagName} + ' '"></i>
+    <p>Tagi</p> <a th:each="tag : ${recipe.tags}" th:href="@{'/tag/' + ${tag.tagName}}"><i th:text="${tag.tagName} + ' '"></i></a>
     <br/>
     <h3>Składniki:</h3>
     <pre th:text="*{ingredients}"></pre>

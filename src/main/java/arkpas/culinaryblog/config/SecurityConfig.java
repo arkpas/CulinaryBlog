@@ -29,10 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/przepis/dodaj", "/kategoria/dodaj")
-                .authenticated();
-        httpSecurity
-                .authorizeRequests()
                 .anyRequest()
                 .permitAll();
         httpSecurity

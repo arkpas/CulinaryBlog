@@ -42,4 +42,14 @@ public class CattegoryService {
     public void deleteCattegory (Cattegory cattegory) {
         cattegoryRepository.removeCattegory(cattegory);
     }
+
+    public Cattegory updateCattegoryPartially(Cattegory cattegory) {
+        Cattegory originalCattegory = this.getCattegory(cattegory.getId());
+        if (originalCattegory != null) {
+            originalCattegory.setName(cattegory.getName());
+            originalCattegory.setCattegoryType(cattegory.getCattegoryType());
+            this.updateCattegory(originalCattegory);
+        }
+        return originalCattegory;
+    }
 }

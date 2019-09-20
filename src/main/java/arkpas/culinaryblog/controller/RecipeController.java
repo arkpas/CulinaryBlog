@@ -3,17 +3,16 @@ package arkpas.culinaryblog.controller;
 import arkpas.culinaryblog.domain.Cattegory;
 import arkpas.culinaryblog.domain.Comment;
 import arkpas.culinaryblog.domain.Recipe;
-import arkpas.culinaryblog.service.CattegoryService;
-import arkpas.culinaryblog.service.RecipeCattegoryService;
-import arkpas.culinaryblog.service.RecipeService;
-import arkpas.culinaryblog.service.TagService;
+import arkpas.culinaryblog.service.*;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,15 +24,17 @@ public class RecipeController {
     private RecipeCattegoryService recipeCattegoryService;
     private CattegoryService cattegoryService;
     private TagService tagService;
+    private CommentService commentService;
+
 
     @Autowired
-    public RecipeController(RecipeService recipeService, RecipeCattegoryService recipeCattegoryService, CattegoryService cattegoryService, TagService tagService) {
+    public RecipeController(RecipeService recipeService, RecipeCattegoryService recipeCattegoryService, CattegoryService cattegoryService, TagService tagService, CommentService commentService) {
         this.recipeService = recipeService;
         this.recipeCattegoryService = recipeCattegoryService;
         this.cattegoryService = cattegoryService;
         this.tagService = tagService;
+        this.commentService = commentService;
     }
-
 
 
     // this attribute is used in menu on every page
@@ -77,12 +78,19 @@ public class RecipeController {
         return "recipeForm";
     }
     @RequestMapping(value = "/przepis/dodaj", method = RequestMethod.POST)
-    public String addRecipe (Recipe recipe, int cattegoryId1, int cattegoryId2, int cattegoryId3, String tagsString) {
-        recipeService.addRecipe(recipe);
-        System.out.println("URL" + recipe.getImageLink());
-        recipeCattegoryService.addRecipeCattegories(recipe, cattegoryId1, cattegoryId2, cattegoryId3);
-        tagService.addTags(recipe, tagsString);
-        return "redirect:/";
+    public String addRecipe (@Valid Recipe recipe, BindingResult result, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId, @RequestParam("tagsString") String tagsString, Model model) {
+        if (result.hasErrors())
+            return "recipeForm";
+        if (recipeService.getRecipe(recipe.getName()) != null) {
+            result.rejectValue("name", "error.recipe", "Przepis o tej nazwie już istnieje!");
+            return "recipeForm";
+        }
+        else {
+            recipeService.addRecipe(recipe);
+            recipeCattegoryService.addRecipeCattegories(recipe, timeCattegoryId, dietCattegoryId, mealCattegoryId);
+            tagService.addTags(recipe, tagsString);
+            return "redirect:/";
+        }
     }
 
     @RequestMapping(value = "/przepis/szukaj", method = RequestMethod.POST)
@@ -101,10 +109,28 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/przepis/edytuj", method = RequestMethod.POST)
-    public String editRecipe (Recipe recipe, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId ) {
-        recipeService.updateRecipe(recipe);
-        recipeCattegoryService.updateRecipeCattegories(recipe.getId(), timeCattegoryId, dietCattegoryId, mealCattegoryId);
-        return "redirect:/przepis/" + recipe.getName();
+    public String editRecipe (@Valid Recipe recipe, BindingResult result, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId, @RequestParam("tagsString") String tagsString) {
+        if (result.hasErrors())
+            return "recipeEditionForm";
+        if (recipeService.getRecipe(recipe.getName()) != null) {
+            result.rejectValue("name", "error.recipe", "Przepis o tej nazwie już istnieje!");
+            return "recipeEditionForm";
+        }
+        else {
+            recipe = recipeService.updateRecipePartially(recipe);
+            recipeCattegoryService.updateRecipeCattegories(recipe, timeCattegoryId, dietCattegoryId, mealCattegoryId);
+            //tagService.updateTags(recipe.getId(), tagsString);
+            return "redirect:/przepis/" + recipe.getName();
+        }
+    }
+
+    @RequestMapping(value = "przepis/usun/{id}")
+    public String deleteRecipe (@PathVariable("id") int recipeId) {
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        if (recipe != null) {
+            recipeService.deleteRecipe(recipe);
+        }
+        return "redirect:/";
     }
 
 

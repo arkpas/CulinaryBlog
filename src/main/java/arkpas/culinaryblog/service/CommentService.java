@@ -6,6 +6,8 @@ import arkpas.culinaryblog.domain.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
 
@@ -27,13 +29,11 @@ public class CommentService {
     }
 
     public void addComment (int recipeId, Comment comment) {
-
         Recipe recipe = recipeService.getRecipe(recipeId);
-
-        comment.setRecipe(recipe);
         recipe.addComment(comment);
-
         recipeService.updateRecipe(recipe);
-        commentRepository.updateComment(comment);
     }
+
+    public void deleteComment (Comment comment) { commentRepository.removeComment(comment); }
+
 }

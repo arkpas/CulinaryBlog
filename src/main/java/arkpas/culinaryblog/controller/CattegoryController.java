@@ -10,11 +10,14 @@ import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -62,10 +65,18 @@ public class CattegoryController {
     }
 
     @RequestMapping(value = "/kategoria/dodaj", method = RequestMethod.POST)
-    public String addCattegory (Cattegory cattegory) {
-        cattegoryService.addCattegory(cattegory);
-        System.out.println(cattegory.getCattegoryType());
-        return "redirect:/";
+    public String addCattegory (@Valid Cattegory cattegory, BindingResult result) {
+        if (result.hasErrors())
+            return "cattegoryForm";
+        if (cattegoryService.getCattegory(cattegory.getName()) != null) {
+            result.rejectValue("name", "error.cattegory", "Kategoria o tej nazwie już istnieje!");
+            return "cattegoryForm";
+        }
+        else {
+            cattegoryService.addCattegory(cattegory);
+            System.out.println(cattegory.getCattegoryType());
+            return "redirect:/";
+        }
     }
 
     @RequestMapping("/kategoria/modyfikuj")
@@ -82,15 +93,22 @@ public class CattegoryController {
     }
 
     @RequestMapping(value = "/kategoria/edytuj/{cattegoryId}", method = RequestMethod.POST)
-    public String editCattegory (Cattegory cattegory, Model model) {
-        cattegoryService.updateCattegory(cattegory);
-        return "redirect:/kategoria/modyfikuj";
+    public String editCattegory (@Valid Cattegory cattegory, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "cattegoryEditionForm";
+        if (cattegoryService.getCattegory(cattegory.getName()) != null) {
+            result.rejectValue("name", "error.cattegory", "Kategoria o tej nazwie już istnieje!");
+            return "cattegoryEditionForm";
+        }
+        else {
+            cattegoryService.updateCattegoryPartially(cattegory);
+            return "redirect:/kategoria/modyfikuj";
+        }
     }
 
     @RequestMapping("/kategoria/usun/{cattegoryId}")
     public String removeCattegory (@PathVariable("cattegoryId") int cattegoryId, Model model) {
         Cattegory cattegory = cattegoryService.getCattegory(cattegoryId);
-        recipeCattegoryService.deleteCattegoryFromRecipes(cattegory);
         cattegoryService.deleteCattegory(cattegory);
         return "redirect:/kategoria/modyfikuj";
     }

@@ -8,37 +8,39 @@
 <body>
 <div th:fragment="header" class="header">
     <div align="center">
-        <a th:href="@{/}"><IMG SRC="/images/logo.png" ALT="some text" WIDTH=600 HEIGHT=100></a>
+        <a th:href="@{/}"><IMG SRC="/images/logo.png" ALT="some text" WIDTH=700 HEIGHT=75></a>
     </div>
     <div class="naviBar">
-        <div class="dropdown" sec:authorize="isAuthenticated()">
-            <button class="menuButton">ZARZĄDZANIE</button>
-            <div class="dropdownContent">
-                <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ PRZEPIS</a>
-                <a class="menuLink" th:href="@{/kategoria/dodaj}">DODAJ KATEGORIĘ</a>
-                <a class="menuLink" th:href="@{/kategoria/modyfikuj}">MODYFIKUJ KATEGORIE</a>
+        <div class="menuButtonsContainer">
+            <div class="dropdown">
+                <button class="menuButton">ZARZĄDZANIE</button>
+                <div class="dropdownContent">
+                    <a class="menuLink" th:href="@{/przepis/dodaj}">DODAJ PRZEPIS</a>
+                    <a class="menuLink" th:href="@{/kategoria/dodaj}">DODAJ KATEGORIĘ</a>
+                    <a class="menuLink" th:href="@{/kategoria/modyfikuj}">MODYFIKUJ KATEGORIE</a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <button class="menuButton">PORA DNIA</button>
-            <div class="dropdownContent">
-                <a th:each="timeCattegory : ${timeCattegories}" th:text="${#strings.toUpperCase(timeCattegory.name)}" th:href="@{'/kategoria/' + ${timeCattegory.name}}" class="menuLink"></a>
+            <div class="dropdown">
+                <button class="menuButton">PORA</button>
+                <div class="dropdownContent">
+                    <a th:each="timeCattegory : ${timeCattegories}" th:text="${#strings.toUpperCase(timeCattegory.name)}" th:href="@{'/kategoria/' + ${timeCattegory.name}}" class="menuLink"></a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <button class="menuButton">DIETY</button>
-            <div class="dropdownContent">
-                <a th:each="dietCattegory : ${dietCattegories}" th:text="${#strings.toUpperCase(dietCattegory.name)}" th:href="@{'/kategoria/' + ${dietCattegory.name}}" class="menuLink"></a>
+            <div class="dropdown">
+                <button class="menuButton">DIETY</button>
+                <div class="dropdownContent">
+                    <a th:each="dietCattegory : ${dietCattegories}" th:text="${#strings.toUpperCase(dietCattegory.name)}" th:href="@{'/kategoria/' + ${dietCattegory.name}}" class="menuLink"></a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown">
-            <button class="menuButton">DANIA</button>
-            <div class="dropdownContent">
-                <a th:each="mealCattegory : ${mealCattegories}" th:text="${#strings.toUpperCase(mealCattegory.name)}" th:href="@{'/kategoria/' + ${mealCattegory.name}}" class="menuLink"></a>
+            <div class="dropdown">
+                <button class="menuButton">DANIA</button>
+                <div class="dropdownContent">
+                    <a th:each="mealCattegory : ${mealCattegories}" th:text="${#strings.toUpperCase(mealCattegory.name)}" th:href="@{'/kategoria/' + ${mealCattegory.name}}" class="menuLink"></a>
+                </div>
             </div>
-        </div>
-        <div class="dropdown" sec:authorize="isAuthenticated()">
-            <a th:href="@{/logout}"><button class="menuButton">WYLOGUJ</button></a>
+            <div class="dropdown" sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}"><button class="menuButton">WYLOGUJ</button></a>
+            </div>
         </div>
         <form class="searchBar" th:action="@{/przepis/szukaj}" th:method="post">
             <input type="text" name="searchText"/>

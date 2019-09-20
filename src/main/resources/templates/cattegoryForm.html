@@ -13,6 +13,7 @@
     <br>
     <b>Nazwa </b>
     <input type="text" th:field="*{name}"/>
+    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
     <br/>
     <b>Typ kategorii</b>
     <select th:field="*{cattegoryType}">

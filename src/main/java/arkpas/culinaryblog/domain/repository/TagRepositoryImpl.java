@@ -31,6 +31,11 @@ public class TagRepositoryImpl implements TagRepository {
     }
 
     @Override
+    public List<Tag> getTagsByRecipe(int recipeId) {
+        return entityManager.createQuery("SELECT t FROM Tag AS t WHERE recipe_id = :recipeId", Tag.class).setParameter("recipeId", recipeId).getResultList();
+    }
+
+    @Override
     @Transactional
     public void saveTag(Tag tag) {
         entityManager.persist(tag);

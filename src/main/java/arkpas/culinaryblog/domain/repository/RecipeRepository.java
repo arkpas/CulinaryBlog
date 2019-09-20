@@ -13,6 +13,5 @@ public interface RecipeRepository {
     public List<Recipe> searchRecipes (String searchText);
     public void saveRecipe (Recipe recipe);
     public void updateRecipe (Recipe recipe);
-
-
+    public void removeRecipe(Recipe recipe);
 }

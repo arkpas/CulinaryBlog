@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class CommentRepositoryImpl implements CommentRepository {
@@ -19,6 +20,11 @@ public class CommentRepositoryImpl implements CommentRepository {
     }
 
     @Override
+    public List<Comment> getCommentsByRecipe(int recipeId) {
+        return entityManager.createQuery("SELECT c FROM Comment AS c WHERE recipe_id = :recipeId", Comment.class).setParameter("recipeId", recipeId).getResultList();
+    }
+
+    @Override
     @Transactional
     public void saveComment(Comment comment) {
         entityManager.persist(comment);
@@ -28,5 +34,11 @@ public class CommentRepositoryImpl implements CommentRepository {
     @Transactional
     public void updateComment(Comment comment) {
         entityManager.merge(comment);
+    }
+
+    @Override
+    @Transactional
+    public void removeComment(Comment comment) {
+        entityManager.remove(comment);
     }
 }

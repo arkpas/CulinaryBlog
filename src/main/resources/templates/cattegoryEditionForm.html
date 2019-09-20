@@ -14,6 +14,7 @@
     <input type="text" th:field="*{id}" th:value="${cattegory.id}" hidden />
     <b>Nazwa </b>
     <input type="text" th:field="*{name}" th:placeholder="*{name}"/>
+    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
     <br/>
     <b>Typ kategorii</b>
     <select th:field="*{cattegoryType}" >
@@ -21,7 +22,7 @@
         <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}" ></option>
     </select>
     <br/>
-    <a th:href="@{/kategoria/modyfikuj}"><button type="submit">Anuluj</button></a>
+    <a th:href="@{/kategoria/modyfikuj}"><button>Anuluj</button></a>
     <button type="submit">Zapisz</button>
 </form>
 </body>
