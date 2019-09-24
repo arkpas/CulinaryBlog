@@ -10,20 +10,20 @@
     border-radius: 15px;
 }
 .naviBar {
-    width: 90%;
+    width: 100%;
     height: 40px;
     margin: 0 auto;
     padding: 5px;
-    text-align: center;
 }
 
 .menuButtonsContainer {
     width: 800px;
-    height: 100%;
-    position: absolute;
+    height: 30px;
     left: 50%;
     margin-left: -400px;
+    position: absolute;
     display: block;
+    text-align: center;
 }
 
 .searchBar {
@@ -31,23 +31,28 @@
     float: right;
     float: top;
     padding: 5px;
+    margin: 0px 5px;
 }
 
-.menuButton {
+.menuButton, .menuButtonUsername {
     text-decoration: none;
-    display: block;
+    position: relative;
     text-align: center;
     background-color: orange;
     color: white;
-    border-width: 0px;
     border-radius: 5px;
     border-color: black;
     border-width: 2px;
-    padding: 5px 10px;
     font-weight: bold;
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 15px;
     width: 150px;
+    height: 30px;
+    vertical-align: middle
+}
+
+.menuButtonUsername {
+    font-size: 13px;
 }
 
 .dropdown {
@@ -84,6 +89,6 @@
     border-color:
 }
 
-.dropdown:hover .dropdownContent {
+.dropdown:hover > .dropdownContent{
     display: block;
 }

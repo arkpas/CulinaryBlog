@@ -39,10 +39,10 @@ public class RecipeService {
     public void addRecipe (Recipe recipe) {
 
         Rate rate = new Rate();
-        rate.setRecipe(recipe);
 
         recipe.setRate(rate);
         recipe.setDateTime();
+
         recipeRepository.saveRecipe(recipe);
     }
 
@@ -73,5 +73,13 @@ public class RecipeService {
 
         }
         return originalRecipe;
+    }
+
+    public boolean isDuplicate(Recipe recipe) {
+        Recipe duplicate = getRecipe(recipe.getName());
+        if (duplicate != null && duplicate.getId() != recipe.getId())
+            return true;
+        else
+            return false;
     }
 }

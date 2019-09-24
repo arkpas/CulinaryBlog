@@ -84,7 +84,7 @@ public class CattegoryController {
         return "cattegoryModification";
     }
 
-    @RequestMapping("/kategoria/edytuj/{cattegoryId}")
+    @RequestMapping("/kategoria/modyfikuj/edytuj/{cattegoryId}")
     public String editCattegory (@PathVariable("cattegoryId") int cattegoryId, Model model) {
         Cattegory cattegory = cattegoryService.getCattegory(cattegoryId);
 
@@ -92,7 +92,7 @@ public class CattegoryController {
         return "cattegoryEditionForm";
     }
 
-    @RequestMapping(value = "/kategoria/edytuj/{cattegoryId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/kategoria/modyfikuj/edytuj/{cattegoryId}", method = RequestMethod.POST)
     public String editCattegory (@Valid Cattegory cattegory, BindingResult result, Model model) {
         if (result.hasErrors())
             return "cattegoryEditionForm";
@@ -106,7 +106,7 @@ public class CattegoryController {
         }
     }
 
-    @RequestMapping("/kategoria/usun/{cattegoryId}")
+    @RequestMapping("/kategoria/modyfikuj/usun/{cattegoryId}")
     public String removeCattegory (@PathVariable("cattegoryId") int cattegoryId, Model model) {
         Cattegory cattegory = cattegoryService.getCattegory(cattegoryId);
         cattegoryService.deleteCattegory(cattegory);

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<form th:object="${cattegory}" th:method="post" th:action="@{'/kategoria/edytuj/' + ${cattegory.id}}">
+<form th:object="${cattegory}" th:method="post" th:action="@{'/kategoria/modyfikuj/edytuj/' + ${cattegory.id}}">
     <br>
     <input type="text" th:field="*{id}" th:value="${cattegory.id}" hidden />
     <b>Nazwa </b>

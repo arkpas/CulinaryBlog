@@ -27,8 +27,8 @@
                 </tr>
                 <tr th:each="cattegory : ${timeCattegories}">
                     <td><b th:text="${cattegory.name}"></b></td>
-                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
-                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
                 </tr>
             </table>
         </div>
@@ -39,8 +39,8 @@
                 </tr>
                 <tr th:each="cattegory : ${dietCattegories}">
                     <td><b th:text="${cattegory.name}"></b></td>
-                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
-                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
                 </tr>
             </table>
         </div>
@@ -51,8 +51,8 @@
                 </tr>
                 <tr th:each="cattegory : ${mealCattegories}">
                     <td><b th:text="${cattegory.name}"></b></td>
-                    <td><a th:href="@{'/kategoria/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
-                    <td><a th:href="@{'/kategoria/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/edytuj/' + ${cattegory.id}}">Edytuj</a></td>
+                    <td><a th:href="@{'/kategoria/modyfikuj/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
                 </tr>
             </table>
         </div>

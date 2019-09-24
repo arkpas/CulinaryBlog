@@ -41,7 +41,7 @@ public class Starter implements CommandLineRunner {
         recipeService.addRecipe(recipe);
 
 
-        userService.addUser("arek", "123", "123");
+        userService.addUser("arek", "123", "123", "blogger");
 
 
         createDietCattegories();

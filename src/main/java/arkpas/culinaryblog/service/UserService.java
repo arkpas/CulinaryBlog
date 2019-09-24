@@ -1,8 +1,10 @@
 package arkpas.culinaryblog.service;
 
 import arkpas.culinaryblog.domain.User;
+import arkpas.culinaryblog.domain.UserDetails;
 import arkpas.culinaryblog.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +28,17 @@ public class UserService {
         return userRepository.getUser(username);
     }
 
+    public User getCurrentUser () {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        return getUser(name);
+    }
+
     //returns null when user is successfully created
     public String addUser (String username, String password, String passwordRepeat) {
+      return addUser(username, password, passwordRepeat, "user");
+    }
+
+    public String addUser (String username, String password, String passwordRepeat, String authority) {
         if (this.getUser(username) != null)
             return "Nazwa użytkownika zajęta.";
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -37,8 +48,12 @@ public class UserService {
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
+
+            UserDetails userDetails = new UserDetails();
+            user.setUserDetails(userDetails);
+
             userRepository.saveUser(user);
-            authorityService.addAuthority(username, "blogger");
+            authorityService.addAuthority(username, authority);
             return null;
         }
         else {

@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Blog kulinarny</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
@@ -19,8 +20,8 @@
 <div th:object="${recipe}">
     <div align="center">
         <h1><p th:text="*{name}"/></h1>
-        <a th:href="@{'/przepis/edytuj/' + *{id}}">Edytuj</a>
-        <a th:href="@{'/przepis/usun/' + *{id}}" onclick="return confirmRemove()">Usuń</a>
+        <a sec:authorize="hasAuthority('blogger')" th:href="@{'/przepis/modyfikuj/edytuj/' + *{id}}">Edytuj</a>
+        <a sec:authorize="hasAuthority('blogger')" th:href="@{'/przepis/modyfikuj/usun/' + *{id}}" onclick="return confirmRemove()">Usuń</a>
         <IMG th:src="@{*{imageLink}}" ALT="some text" WIDTH=700 HEIGHT=700>
     </div>
     <p>Kategorie:</p> <i th:each="cattegory : ${recipe.cattegories}" th:text="${cattegory.cattegory.name} + ' '"></i>
@@ -34,16 +35,15 @@
     <pre th:text="*{instruction}"></pre>
     <br/>
     <h1>Komentarze</h1>
-    <form th:object="${comment}" th:method="post" th:action="@{/przepis/dodajKomentarz}">
+    <form sec:authorize="isAuthenticated()" th:object="${comment}" th:method="post" th:action="@{/przepis/dodajKomentarz}">
         <input type="hidden" th:value="${recipe.id}" name="recipeId"/>
-        <input type="text" maxlength="20" size="20" th:field="*{username}"/>
         <br/>
         <textarea type="text" rows="4" cols="50" th:field="*{text}"/>
         <br/>
         <button type="submit">Skomentuj</button>
     </form>
     <div class="comment" th:each="comment : *{comments}">
-        <b><p th:text="${comment.username}"/></b>
+        <b><p th:text="${comment.userDetails.user.username}"/></b>
         <p th:text="${comment.text}"/>
     </div>
 

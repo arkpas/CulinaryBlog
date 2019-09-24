@@ -81,7 +81,7 @@ public class RecipeController {
     public String addRecipe (@Valid Recipe recipe, BindingResult result, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId, @RequestParam("tagsString") String tagsString, Model model) {
         if (result.hasErrors())
             return "recipeForm";
-        if (recipeService.getRecipe(recipe.getName()) != null) {
+        if (recipeService.isDuplicate(recipe)) {
             result.rejectValue("name", "error.recipe", "Przepis o tej nazwie już istnieje!");
             return "recipeForm";
         }
@@ -101,18 +101,19 @@ public class RecipeController {
         return "searchResults";
     }
 
-    @RequestMapping(value = "/przepis/edytuj/{recipeId}")
+    @RequestMapping(value = "/przepis/modyfikuj/edytuj/{recipeId}")
     public String editRecipe (@PathVariable("recipeId") int recipeId, Model model) {
         Recipe recipe = recipeService.getRecipe(recipeId);
         model.addAttribute("recipe", recipe);
         return "recipeEditionForm";
     }
 
-    @RequestMapping(value = "/przepis/edytuj", method = RequestMethod.POST)
+    @RequestMapping(value = "/przepis/modyfikuj/edytuj", method = RequestMethod.POST)
     public String editRecipe (@Valid Recipe recipe, BindingResult result, @RequestParam("timeCattegoryId") int timeCattegoryId, @RequestParam("dietCattegoryId") int dietCattegoryId, @RequestParam("mealCattegoryId") int mealCattegoryId, @RequestParam("tagsString") String tagsString) {
         if (result.hasErrors())
             return "recipeEditionForm";
-        if (recipeService.getRecipe(recipe.getName()) != null) {
+
+        if (recipeService.isDuplicate(recipe)) {
             result.rejectValue("name", "error.recipe", "Przepis o tej nazwie już istnieje!");
             return "recipeEditionForm";
         }
@@ -124,7 +125,7 @@ public class RecipeController {
         }
     }
 
-    @RequestMapping(value = "przepis/usun/{id}")
+    @RequestMapping(value = "przepis/modyfikuj/usun/{id}")
     public String deleteRecipe (@PathVariable("id") int recipeId) {
         Recipe recipe = recipeService.getRecipe(recipeId);
         if (recipe != null) {

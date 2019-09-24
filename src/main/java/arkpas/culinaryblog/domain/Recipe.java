@@ -25,19 +25,19 @@ public class Recipe {
     @NotBlank(message = "Pole nie może być puste!")
     private String instruction;
 
-    @OneToMany (mappedBy = "recipe", targetEntity = Comment.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "recipe", targetEntity = Comment.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Comment> comments = new HashSet<>();
 
-    @OneToMany (mappedBy = "recipe", targetEntity = RecipeCattegory.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "recipe", targetEntity = RecipeCattegory.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<RecipeCattegory> cattegories = new HashSet<>();
 
-    @OneToMany (mappedBy = "recipe", targetEntity = Tag.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "recipe", targetEntity = Tag.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Tag> tags = new HashSet<>();
 
     private LocalDateTime dateTime;
     private String imageLink;
 
-    @OneToOne (mappedBy = "recipe", targetEntity = Rate.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne (mappedBy = "recipe", targetEntity = Rate.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Rate rate;
 
 
@@ -109,6 +109,7 @@ public class Recipe {
     }
     public void setRate(Rate rate) {
         this.rate = rate;
+        rate.setRecipe(this);
     }
 
     public void addComment (Comment comment) {

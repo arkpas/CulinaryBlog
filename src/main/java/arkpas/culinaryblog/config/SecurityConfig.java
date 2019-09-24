@@ -27,6 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure (HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
+                .antMatchers("/przepis/dodaj", "/kategoria/dodaj", "/przepis/modyfikuj/**", "/kategoria/modyfikuj/**")
+                .hasAnyAuthority("blogger");
+        httpSecurity.authorizeRequests()
+                .antMatchers("/przepis/dodajKomentarz")
+                .authenticated();
         httpSecurity
                 .authorizeRequests()
                 .anyRequest()

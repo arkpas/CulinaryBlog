@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/edytuj}">
+    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/modyfikuj/edytuj}">
         <input th:type="hidden" th:field="*{id}" th:value="${recipe.id}"/>
         <table>
             <tbody>
