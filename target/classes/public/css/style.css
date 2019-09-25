@@ -1,7 +1,9 @@
+
 body {
     width: 1300px;
     margin: 0 auto;
-    margin-top: 180px;
+    margin-top: 150px;
+    margin-bottom: 20px;
 }
 
 .comment {
@@ -13,30 +15,84 @@ body {
 
 .mainContainer {
     background-color: #fff6de;
-    height: 100%;
     padding: 20px;
     border-width: 1px;
     border-color: orange;
     border-style: solid;
     border-radius: 15px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .recipeMiniature {
     display: inline-block;
     text-align: center;
     width: 300px;
-}
-
-.miniatureLink {
-    text-decoration: none;
-    font-size: 25px;
-    color: orange;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.miniatureImage {
-    border-color: orange;
+    border-color: transparent;
     border-width: 1px;
     border-radius: 15px;
     border-style: solid;
+    text-decoration: none;
+    color: black;
+}
+
+.miniatureName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.recipeMiniature:hover {
+    background-color: darkorange;
+    color: white;
+    border-color: darkorange;
+}
+
+.miniatureImage {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.recipeTitle {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 1px 0px darkorange, -1px 0px darkorange, 0px -1px darkorange, 0px 1px darkorange;
+    margin: 5px;
+}
+
+.recipeImage {
+    border-color: darkorange;
+    border-width: 1px;
+    border-radius: 15px;
+    border-style: solid;
+}
+
+.smallHeader {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+}
+.mediumHeader {
+    font-size: 28px;
+    font-weight: bold;
+}
+.mediumText {
+    font-size: 18px;
+}
+
+.recipeTable {
+    margin: 20px 0px 50px 0px;
+    width: 1200px;
+}
+
+.recipeTable pre {
+    white-space: pre-wrap;
+}
+
+.recipeTable td {
+    vertical-align: top;
+}
+
+.smallLink {
+    text-decoration: underline;
+    color: black;
+    margin: 0 1px;
 }

@@ -4,6 +4,7 @@ import arkpas.culinaryblog.domain.User;
 import arkpas.culinaryblog.domain.UserDetails;
 import arkpas.culinaryblog.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,14 @@ public class UserService {
     }
 
     public User getCurrentUser () {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        return getUser(name);
+        if (SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) {
+            return null;
+        }
+        else {
+            String name = SecurityContextHolder.getContext().getAuthentication().getName();
+            return getUser(name);
+        }
+
     }
 
     //returns null when user is successfully created

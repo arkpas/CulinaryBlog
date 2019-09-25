@@ -1,6 +1,7 @@
 package arkpas.culinaryblog.domain;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ public class UserDetails {
     @OneToMany (mappedBy = "userDetails", targetEntity = Comment.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Comment> comments = new HashSet<>();
 
+    @OneToMany (mappedBy = "userDetails", targetEntity = UserRate.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<UserRate> userRates = new HashSet<>();
+
     public int getId() {
         return id;
     }
@@ -27,6 +31,9 @@ public class UserDetails {
     }
     public Set<Comment> getComments() {
         return comments;
+    }
+    public Set<UserRate> getUserRates() {
+        return Collections.unmodifiableSet(userRates);
     }
 
     public void setId(int id) {
@@ -49,5 +56,19 @@ public class UserDetails {
     public void removeComment (Comment comment) {
         comments.remove(comment);
         comment.setUserDetails(null);
+    }
+
+    public void addUserRate (UserRate userRate) {
+        if (userRate != null) {
+            userRates.add(userRate);
+            userRate.setUserDetails(this);
+        }
+    }
+
+    public void removeUserRate (UserRate userRate) {
+        if (userRates.contains(userRate)) {
+            userRates.remove(userRate);
+            userRate.setUserDetails(null);
+        }
     }
 }

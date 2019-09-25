@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog kulinarny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <div th:replace="header :: header"></div>
+</head>
+
+<body>
+<div th:object="${user}">
+    <h1 th:text="*{username}"></h1>
+    <h2>Comments:</h2>
+    <div class="comment" th:each="comment : *{userDetails.comments}">
+        <p>Przepis: <a th:href="@{'/przepis/' + ${comment.recipe.name}}"> <i th:text="${comment.recipe.name}"></i></a></p>
+        <p th:text="${comment.text}"></p>
+    </div>
+</div>
+</body>
+</html>

@@ -3,41 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="5a5c98d4-6a9f-4f25-9683-522765d14cb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CattegoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CattegoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Rate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Rate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cattegoryEditionForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cattegoryEditionForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cattegoryForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cattegoryForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cattegoryModification.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cattegoryModification.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/recipeEditionForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/recipeEditionForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/landing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/recipePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/recipePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CattegoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CattegoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CommentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Rate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Rate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/UserDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/UserDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/public/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/public/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/cattegoryEditionForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/cattegoryEditionForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/cattegoryForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/cattegoryForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/cattegoryModification.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/cattegoryModification.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/recipeEditionForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/recipeEditionForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/landing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/recipePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/recipePage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

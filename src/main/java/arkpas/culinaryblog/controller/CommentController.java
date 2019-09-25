@@ -20,15 +20,10 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/przepis/dodajKomentarz", method = RequestMethod.POST)
-    public String addComment (int recipeId, Comment comment, RedirectAttributes redirectAttributes) {
+    public String addComment (int recipeId, Comment comment) {
 
         commentService.addComment(recipeId, comment);
-        Recipe recipe = comment.getRecipe();
-        Comment emptyComment = new Comment();
 
-        redirectAttributes.addFlashAttribute("recipe", recipe);
-        redirectAttributes.addFlashAttribute("comment", emptyComment);
-
-        return "redirect:/przepis/" + recipe.getName();
+        return "redirect:/przepis/" + comment.getRecipe().getName();
     }
 }

@@ -92,5 +92,13 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String viewProfile (Model model) {
+        User currentUser = userService.getCurrentUser();
+        model.addAttribute("user", currentUser);
+
+        return "profile";
+    }
+
 
 }

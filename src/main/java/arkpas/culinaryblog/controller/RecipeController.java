@@ -1,8 +1,6 @@
 package arkpas.culinaryblog.controller;
 
-import arkpas.culinaryblog.domain.Cattegory;
-import arkpas.culinaryblog.domain.Comment;
-import arkpas.culinaryblog.domain.Recipe;
+import arkpas.culinaryblog.domain.*;
 import arkpas.culinaryblog.service.*;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -24,18 +23,19 @@ public class RecipeController {
     private RecipeCattegoryService recipeCattegoryService;
     private CattegoryService cattegoryService;
     private TagService tagService;
-    private CommentService commentService;
+    private RateService rateService;
+    private UserService userService;
 
 
     @Autowired
-    public RecipeController(RecipeService recipeService, RecipeCattegoryService recipeCattegoryService, CattegoryService cattegoryService, TagService tagService, CommentService commentService) {
+    public RecipeController(RecipeService recipeService, RecipeCattegoryService recipeCattegoryService, CattegoryService cattegoryService, TagService tagService, RateService rateService, UserService userService) {
         this.recipeService = recipeService;
         this.recipeCattegoryService = recipeCattegoryService;
         this.cattegoryService = cattegoryService;
         this.tagService = tagService;
-        this.commentService = commentService;
+        this.rateService = rateService;
+        this.userService = userService;
     }
-
 
     // this attribute is used in menu on every page
     @ModelAttribute ("timeCattegories")
@@ -59,11 +59,24 @@ public class RecipeController {
     public String getRecipe (@PathVariable(value = "name") String name, Model model) {
         Recipe recipe = recipeService.getRecipe(name);
         Comment emptyComment = new Comment();
+        User user = userService.getCurrentUser();
+        boolean isRated = false;
+        int userRateValue = 0;
+        if (user != null) {
+            int userId = user.getId();
+            isRated = recipe.getRate().getUserRates().stream().anyMatch(userRate -> userRate.getUserDetails().getId() == userId);
+            if (isRated) {
+                userRateValue = recipe.getRate().getUserRates().stream().filter(userRate -> userRate.getUserDetails().getId() == userId).mapToInt(UserRate::getRateValue).findFirst().getAsInt();
+            }
+
+        }
         if (recipe == null)
             return "redirect:/";
         else {
             model.addAttribute("recipe", recipe);
             model.addAttribute("comment", emptyComment);
+            model.addAttribute("isRated", isRated);
+            model.addAttribute("userRateValue", userRateValue);
             return "recipePage";
         }
     }
@@ -125,13 +138,20 @@ public class RecipeController {
         }
     }
 
-    @RequestMapping(value = "przepis/modyfikuj/usun/{id}")
+    @RequestMapping(value = "/przepis/modyfikuj/usun/{id}")
     public String deleteRecipe (@PathVariable("id") int recipeId) {
         Recipe recipe = recipeService.getRecipe(recipeId);
         if (recipe != null) {
             recipeService.deleteRecipe(recipe);
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/przepis/ocen", method = RequestMethod.POST)
+    public String rateRecipe (@RequestParam("rate") int rate, @RequestParam("recipeId") int recipeId) {
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        rateService.rateRecipe(recipe, rate);
+        return "redirect:/przepis/" + recipe.getName();
     }
 
 
