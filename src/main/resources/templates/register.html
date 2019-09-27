@@ -9,24 +9,34 @@
 </head>
 
 <body>
-<h2>REJESTRACJA</h2>
-<div class="form">
-    <p th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+<div class="mainContainer">
     <form th:action="@{/register}" th:object="${user}" method="post">
-        <div class="field">
-            <label>Nazwa: </label> <input type="text" th:field="*{username}" autofocus="autofocus"/>
-            <i th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></i>
-        </div>
-        <div class="field">
-            <label>Haslo: </label>  <input type="password" th:field="*{password}"/>
-            <i th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></i>
-        </div>
-        <div class="field">
-            <label>Powtórz hasło: </label>  <input type="password" id="passwordRepeat" name="passwordRepeat"/>
-        </div>
-        <div class="field">
-            <button type="submit">Zarejestruj</button>
-        </div>
+        <p th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+        <table>
+            <tr>
+                <td><b>Nazwa</b></td>
+                <td>
+                    <input type="text" th:field="*{username}" autofocus="autofocus"/>
+                    <i th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Hasło</b></td>
+                <td>
+                    <input type="password" th:field="*{password}"/>
+                    <i th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Powtórz hasło</b></td>
+                <td>
+                    <input type="password" id="passwordRepeat" name="passwordRepeat"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Zarejestruj</button></td>
+            </tr>
+        </table>
     </form>
 </div>
 </body>

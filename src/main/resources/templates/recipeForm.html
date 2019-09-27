@@ -9,32 +9,34 @@
 </head>
 
 <body>
-    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/dodaj}">
-        <br>
-        <b>Nazwa dania </b> <input type="text" th:field="*{name}"/><i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
-        <br/>
-        <b>Tagi</b>
-        <input type="text" name="tagsString"/>
-        <b>Kategoria</b>
-        <select name="timeCattegoryId" >
-            <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>
-        </select>
-        <b>Typ diety </b>
-        <select name="dietCattegoryId" >
-            <option th:each="dietCattegory : ${dietCattegories}" th:value="${dietCattegory.id}" th:text="${dietCattegory.name}"></option>
-        </select>
-        <b>Typ posiłku </b>
-        <select name="mealCattegoryId" >
-            <option th:each="mealCattegory : ${mealCattegories}" th:value="${mealCattegory.id}" th:text="${mealCattegory.name}"></option>
-        </select>
-        <b>Adres do obrazka</b>
-        <input type="text" th:field="*{imageLink}"/>
-        <br/>
-        <b>Składniki </b> <i th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></i> <br/> <textarea rows=20 cols="40" th:field="*{ingredients}"></textarea>
-        <br/>
-        <b>Instrukcje </b> <i th:if="${#fields.hasErrors('instruction')}" th:errors="*{instruction}"></i> <br/> <textarea rows=20 cols="120" th:field="*{instruction}"></textarea>
-        <br/>
-        <button type="submit">Dodaj przepis</button>
-    </form>
+    <div class="mainContainer">
+        <form th:object="${recipe}" th:method="post" th:action="@{/przepis/dodaj}">
+            <br>
+            <b>Nazwa dania </b> <input type="text" th:field="*{name}"/><i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+            <br/>
+            <b>Tagi</b>
+            <input type="text" name="tagsString"/>
+            <b>Pora</b>
+            <select name="timeCattegoryId" >
+                <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>
+            </select>
+            <b>Typ diety </b>
+            <select name="dietCattegoryId" >
+                <option th:each="dietCattegory : ${dietCattegories}" th:value="${dietCattegory.id}" th:text="${dietCattegory.name}"></option>
+            </select>
+            <b>Typ posiłku </b>
+            <select name="mealCattegoryId" >
+                <option th:each="mealCattegory : ${mealCattegories}" th:value="${mealCattegory.id}" th:text="${mealCattegory.name}"></option>
+            </select>
+            <b>Adres do obrazka</b>
+            <input type="text" th:field="*{imageLink}"/>
+            <br/>
+            <b>Składniki </b> <i th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></i> <br/> <textarea rows=20 cols="40" th:field="*{ingredients}"></textarea>
+            <br/>
+            <b>Instrukcje </b> <i th:if="${#fields.hasErrors('instruction')}" th:errors="*{instruction}"></i> <br/> <textarea rows=20 cols="120" th:field="*{instruction}"></textarea>
+            <br/>
+            <button type="submit">Dodaj przepis</button>
+        </form>
+    </div>
 </body>
 </html>

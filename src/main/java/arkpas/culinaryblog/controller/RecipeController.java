@@ -58,27 +58,25 @@ public class RecipeController {
     @RequestMapping("/przepis/{name}")
     public String getRecipe (@PathVariable(value = "name") String name, Model model) {
         Recipe recipe = recipeService.getRecipe(name);
-        Comment emptyComment = new Comment();
+        if (recipe == null)
+            return "redirect:/";
+
         User user = userService.getCurrentUser();
         boolean isRated = false;
         int userRateValue = 0;
         if (user != null) {
-            int userId = user.getId();
-            isRated = recipe.getRate().getUserRates().stream().anyMatch(userRate -> userRate.getUserDetails().getId() == userId);
-            if (isRated) {
-                userRateValue = recipe.getRate().getUserRates().stream().filter(userRate -> userRate.getUserDetails().getId() == userId).mapToInt(UserRate::getRateValue).findFirst().getAsInt();
-            }
+            isRated = rateService.isRated(recipe, user.getId());
+            userRateValue = rateService.getUserRate(recipe, user.getId());
+        }
 
-        }
-        if (recipe == null)
-            return "redirect:/";
-        else {
-            model.addAttribute("recipe", recipe);
-            model.addAttribute("comment", emptyComment);
-            model.addAttribute("isRated", isRated);
-            model.addAttribute("userRateValue", userRateValue);
-            return "recipePage";
-        }
+        Comment emptyComment = new Comment();
+
+        model.addAttribute("recipe", recipe);
+        model.addAttribute("comment", emptyComment);
+        model.addAttribute("isRated", isRated);
+        model.addAttribute("userRateValue", userRateValue);
+        return "recipePage";
+
     }
 
 
@@ -133,7 +131,7 @@ public class RecipeController {
         else {
             recipe = recipeService.updateRecipePartially(recipe);
             recipeCattegoryService.updateRecipeCattegories(recipe, timeCattegoryId, dietCattegoryId, mealCattegoryId);
-            //tagService.updateTags(recipe.getId(), tagsString);
+            tagService.updateTags(recipe, tagsString);
             return "redirect:/przepis/" + recipe.getName();
         }
     }

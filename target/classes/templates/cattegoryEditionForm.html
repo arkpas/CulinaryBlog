@@ -10,20 +10,37 @@
 
 <body>
 <form th:object="${cattegory}" th:method="post" th:action="@{'/kategoria/modyfikuj/edytuj/' + ${cattegory.id}}">
-    <br>
     <input type="text" th:field="*{id}" th:value="${cattegory.id}" hidden />
-    <b>Nazwa </b>
-    <input type="text" th:field="*{name}" th:placeholder="*{name}"/>
-    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
-    <br/>
-    <b>Typ kategorii</b>
-    <select th:field="*{cattegoryType}" >
-        <option th:value="*{cattegoryType}" th:text="*{cattegoryType.getName()}" selected hidden></option>
-        <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}" ></option>
-    </select>
-    <br/>
-    <a th:href="@{/kategoria/modyfikuj}"><button>Anuluj</button></a>
-    <button type="submit">Zapisz</button>
+    <div class="mainContainer">
+        <table>
+            <tr>
+                <td>
+                    <b>Nazwa </b>
+                </td>
+                <td>
+                    <input type="text" th:field="*{name}" th:placeholder="*{name}"/>
+                    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Typ kategorii</b></td>
+                <td>
+                    <select th:field="*{cattegoryType}" >
+                        <option th:value="*{cattegoryType}" th:text="*{cattegoryType.getName()}" selected hidden></option>
+                        <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}" ></option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a th:href="@{/kategoria/modyfikuj}"><button>Anuluj</button></a>
+                    <button type="submit">Zapisz</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
 </form>
 </body>
 </html>

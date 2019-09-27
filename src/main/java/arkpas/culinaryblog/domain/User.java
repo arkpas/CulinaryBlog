@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull (message = "Pole nie może być puste")
-    @Size(min=3, message="Nazwa jest za krótka - minumum 3 znaki")
+    @Size(min=3, message="Nazwa jest za krótka - minimum 3 znaki")
     @Size(max=16, message="Nazwa jest za długa - maksymalnie 16 znaków")
     private String username;
     @NotNull (message = "Pole nie może być puste")
-    @Size(min=3, message = "Hasło jest za krótkie - minumum 3 znaki")
+    @Size(min=3, message = "Hasło jest za krótkie - minimum 3 znaki")
     private String password;
     private boolean active = true;
     @OneToOne (mappedBy = "user", targetEntity = UserDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -29,9 +29,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-    public boolean isActive() {
-        return active;
-    }
     public UserDetails getUserDetails() {
         return userDetails;
     }
@@ -45,11 +42,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setActive(boolean active) {
-        this.active = active;
-    }
     public void setUserDetails(UserDetails userDetails) {
+        if (userDetails == null) {
+            if (this.userDetails != null) {
+                this.userDetails.setUser(null);
+            }
+        }
+        else {
+            userDetails.setUser(this);
+        }
         this.userDetails = userDetails;
-        userDetails.setUser(this);
     }
 }

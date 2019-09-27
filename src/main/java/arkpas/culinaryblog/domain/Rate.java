@@ -44,12 +44,6 @@ public class Rate {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-    public void setVotes(int votes) {
-        this.votes = votes;
-    }
 
 
     public void addUserRate (UserRate userRate) {
@@ -59,15 +53,11 @@ public class Rate {
         }
     }
 
-    public void removeUserRate (UserRate userRate) {
-        if (userRates.contains(userRate)) {
-            userRates.remove(userRate);
-            userRate.setRate(null);
-        }
-    }
-
     public void calculateRating () {
         votes = userRates.size();
-        rating = userRates.stream().mapToInt(UserRate::getRateValue).sum() / votes;
+        if (votes == 0)
+            rating = 0;
+        else
+            rating = userRates.stream().mapToInt(UserRate::getRateValue).sum() / (votes*1.0); //multiply by 1.0 to get float result from division
     }
 }

@@ -52,38 +52,53 @@
             <a class="smallLink" th:href="@{'/tag/' + ${tag.tagName}}" th:text="${tag.tagName}"></a>
         </span>
     </span>
-    <span class="mediumHeader">Ocena</span>
-        <div>
-            <b th:text="${#numbers.formatDecimal(recipe.rate.rating, 1, 2)}"></b><i th:text="' (głosów: ' + *{rate.votes} + ')'"></i>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <div th:if="${isRated == false}">
-                <p><b>Oceń przepis:</b></p>
-                <form th:action="@{/przepis/ocen}" th:method="post">
-                    <input type="hidden" name="recipeId" th:value="*{id}"/>
-                    <button type="submit" name="rate" value="1">1</button>
-                    <button type="submit" name="rate" value="2">2</button>
-                    <button type="submit" name="rate" value="3">3</button>
-                    <button type="submit" name="rate" value="4">4</button>
-                    <button type="submit" name="rate" value="5">5</button>
-                </form>
-            </div>
-            <div th:if="${isRated == true}">
-                <p><b>Twoja ocena:</b> <i th:text="${userRateValue}"></i></p>
-            </div>
-        </div>
-    <h1>Komentarze</h1>
-    <form sec:authorize="isAuthenticated()" th:object="${comment}" th:method="post" th:action="@{/przepis/dodajKomentarz}">
-        <input type="hidden" th:value="${recipe.id}" name="recipeId"/>
-        <br/>
-        <textarea type="text" rows="4" cols="50" th:field="*{text}"/>
-        <br/>
-        <button type="submit">Skomentuj</button>
-    </form>
-    <div class="comment" th:each="comment : *{comments}">
-        <b><p th:text="${comment.userDetails.user.username}"/></b>
-        <p th:text="${comment.text}"/>
-    </div>
+    <table class="commentsAndRatingTable">
+        <colgroup>
+            <col span="1" style="width: 70%;">
+            <col span="1" style="width: 30%;">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <span class="mediumHeader">Komentarze</span>
+                    <form sec:authorize="isAuthenticated()" th:object="${comment}" th:method="post" th:action="@{/przepis/dodajKomentarz}">
+                        <input type="hidden" th:value="${recipe.id}" name="recipeId"/>
+                        <input type="hidden" th:value="${recipe.name}" name="recipeName"/>
+                        <br/>
+                        <textarea type="text" class="commentTextArea" th:field="*{text}"/>
+                        <br/>
+                        <button type="submit">Skomentuj</button>
+                    </form>
+                    <div class="comment" th:each="comment : *{comments}">
+                        <span class="commentUsername" th:text="${comment.userDetails.user.username}"/></span>
+                        <span class="commentText" th:text="${comment.text}"></span>
+                    </div>
+                </td>
+                <td valign="top" align="center">
+                    <span class="mediumHeader">Ocena</span>
+                    <div>
+                        <b th:text="${#numbers.formatDecimal(recipe.rate.rating, 1, 2)}"></b><i th:text="' (głosów: ' + *{rate.votes} + ')'"></i>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <div th:if="${isRated == false}">
+                            <p><b>Oceń przepis:</b></p>
+                            <form th:action="@{/przepis/ocen}" th:method="post">
+                                <input type="hidden" name="recipeId" th:value="*{id}"/>
+                                <button type="submit" name="rate" value="1">1</button>
+                                <button type="submit" name="rate" value="2">2</button>
+                                <button type="submit" name="rate" value="3">3</button>
+                                <button type="submit" name="rate" value="4">4</button>
+                                <button type="submit" name="rate" value="5">5</button>
+                            </form>
+                        </div>
+                        <div th:if="${isRated == true}">
+                            <p><b>Twoja ocena:</b> <i th:text="${userRateValue}"></i></p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 
 </div>

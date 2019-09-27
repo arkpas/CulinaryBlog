@@ -72,7 +72,6 @@ public class Recipe {
     public String getImageLink() {
         return imageLink;
     }
-
     public Rate getRate() {
         return rate;
     }
@@ -89,62 +88,58 @@ public class Recipe {
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
-    public void setCattegories(Set<RecipeCattegory> cattegories) {
-        this.cattegories = cattegories;
-    }
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
+
     public void setDateTime () {
         dateTime = LocalDateTime.now();
     }
+
     public void setRate(Rate rate) {
+        if (rate == null) {
+            if (this.rate != null) {
+                this.rate.setRecipe(null);
+            }
+        }
+        else {
+            rate.setRecipe(this);
+        }
         this.rate = rate;
-        rate.setRecipe(this);
     }
 
     public void addComment (Comment comment) {
-        comments.add(comment);
-        comment.setRecipe(this);
-    }
-    public void removeComment (Comment comment) {
-        if (comments.contains(comment)) {
-            comments.remove(comment);
-            comment.setRecipe(null);
+        if (comment != null) {
+            comments.add(comment);
+            comment.setRecipe(this);
         }
     }
+
     public void addRecipeCattegory (RecipeCattegory recipeCattegory) {
-        cattegories.add(recipeCattegory);
-        recipeCattegory.setRecipe(this);
-    }
-    public void removeRecipeCattegory (RecipeCattegory recipeCattegory) {
-        if (cattegories.contains(recipeCattegory)) {
-            cattegories.remove(recipeCattegory);
-            recipeCattegory.setRecipe(null);
+        if (recipeCattegory != null) {
+            cattegories.add(recipeCattegory);
+            recipeCattegory.setRecipe(this);
         }
     }
 
     public void removeAllRecipeCattegories () {
+        for (RecipeCattegory rc : cattegories) {
+            rc.setRecipe(null);
+        }
         cattegories.clear();
     }
     public void addTag (Tag tag) {
-        tags.add(tag);
-        tag.setRecipe(this);
-    }
-    public void removeTag (Tag tag) {
-        if (tags.contains(tag)) {
-            tags.remove(tag);
-            tag.setRecipe(null);
+        if (tag != null) {
+            tags.add(tag);
+            tag.setRecipe(this);
         }
+    }
+
+    public void removeAllTags () {
+        for (Tag t : tags) {
+            t.setRecipe(null);
+        }
+        tags.clear();
     }
 
     @Override

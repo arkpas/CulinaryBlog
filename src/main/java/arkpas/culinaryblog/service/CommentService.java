@@ -24,30 +24,20 @@ public class CommentService {
         this.userService = userService;
     }
 
-
-    public Comment getComment (int id) {
-        return commentRepository.getComment(id);
-    }
-
-    public void updateComment (Comment comment) {
-        commentRepository.updateComment(comment);
-    }
-
-    public void saveComment (Comment comment) { commentRepository.saveComment(comment); }
-
-    public void addComment (int recipeId, Comment comment) {
+    public Comment addComment (int recipeId, Comment comment) {
         User user = userService.getCurrentUser();
-        if (user != null) {
+        Recipe recipe = recipeService.getRecipe(recipeId);
+        if (user != null && recipe != null && comment != null) {
             UserDetails userDetails = user.getUserDetails();
-            Recipe recipe = recipeService.getRecipe(recipeId);
-
-            recipe.addComment(comment);
-            userDetails.addComment(comment);
-
-            commentRepository.saveComment(comment);
+            if (userDetails != null) {
+                recipe.addComment(comment);
+                userDetails.addComment(comment);
+                commentRepository.saveComment(comment);
+                return comment;
+            }
         }
+        return null;
     }
 
-    public void deleteComment (Comment comment) { commentRepository.removeComment(comment); }
 
 }

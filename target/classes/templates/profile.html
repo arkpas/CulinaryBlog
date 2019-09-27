@@ -9,12 +9,43 @@
 </head>
 
 <body>
-<div th:object="${user}">
-    <h1 th:text="*{username}"></h1>
-    <h2>Comments:</h2>
-    <div class="comment" th:each="comment : *{userDetails.comments}">
-        <p>Przepis: <a th:href="@{'/przepis/' + ${comment.recipe.name}}"> <i th:text="${comment.recipe.name}"></i></a></p>
-        <p th:text="${comment.text}"></p>
+<div class="mainContainer">
+    <div th:object="${user}">
+        <span class="profileUsername">
+            Użytkownik:
+            <b th:text="*{username}"></b>
+        </span>
+        <div align="center">
+            <table class="commentsAndRatingTable">
+                <colgroup>
+                    <col span="1" style="width: 70%">
+                    <col span="1" style="width: 30%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="mediumHeader">Komentarze</th>
+                        <th class="mediumHeader">Oceny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="comment" th:each="comment : *{userDetails.comments}">
+                                <span class="commentRecipeName">Przepis: <a th:href="@{'/przepis/' + ${comment.recipe.name}}"> <i th:text="${comment.recipe.name}"></i></a></span>
+                                <span class="commentText" th:text="${comment.text}"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="rating" th:each="rate : *{userDetails.userRates}">
+                                <span class="ratingRecipeName">Przepis: <a th:href="@{'/przepis/' + ${rate.rate.recipe.name}}"> <i th:text="${rate.rate.recipe.name}"></i></a></span>
+                                <span class="ratingUserRateValue">Ocena: <i th:text="${rate.rateValue}"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 </body>

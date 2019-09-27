@@ -9,18 +9,35 @@
 </head>
 
 <body>
-<form th:object="${cattegory}" th:method="post" th:action="@{/kategoria/dodaj}">
-    <br>
-    <b>Nazwa </b>
-    <input type="text" th:field="*{name}"/>
-    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
-    <br/>
-    <b>Typ kategorii</b>
-    <select th:field="*{cattegoryType}">
-        <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}"></option>
-    </select>
-    <br/>
-    <button type="submit">Dodaj kategorię</button>
-</form>
+<div class="mainContainer">
+    <form th:object="${cattegory}" th:method="post" th:action="@{/kategoria/dodaj}">
+        <table>
+            <tr>
+                <td>
+                    <b>Nazwa </b>
+                </td>
+                <td>
+                    <input type="text" th:field="*{name}"/>
+                    <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Typ kategorii</b></td>
+                <td>
+                    <select th:field="*{cattegoryType}">
+                        <option th:each="enum : ${T(arkpas.culinaryblog.utils.CattegoryType).values()}" th:value="${enum}" th:text="${enum.getName()}"></option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a th:href="@{/}"><button>Anuluj</button></a>
+                    <button type="submit">Dodaj kategorię</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

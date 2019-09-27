@@ -9,10 +9,15 @@
 </head>
 
 <body>
-<b><h3>Wyniki wyszukiwania:</h3></b>
-<p th:if="${recipes.isEmpty()}">Nic nie znaleziono :(</p>
-<div th:each="recipe : ${recipes}">
-    <a th:href="@{'/przepis/' + ${recipe.name}}" th:text="${recipe.name}"></a>
+<div class="mainContainer">
+    <b><h3>Wyniki wyszukiwania:</h3></b>
+    <b th:if="${recipes.isEmpty()}">Nic nie znaleziono :(</b>
+    <a class="recipeMiniature" th:each="recipe : ${recipes}" th:href="@{'/przepis/' + ${recipe.name}}">
+        <span class="miniatureName" th:text="${#strings.toUpperCase(recipe.name)}"></span>
+        <div class="miniatureImage">
+            <IMG th:src="@{${recipe.imageLink}}" ALT="some text" WIDTH=300 HEIGHT=300>
+        </div>
+    </a>
 </div>
 </body>
 </html>

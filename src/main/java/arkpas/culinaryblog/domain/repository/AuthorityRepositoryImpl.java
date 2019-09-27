@@ -20,31 +20,10 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
     }
 
     @Override
-    public Authority getAuthority(int authorityId) {
-        return entityManager.find(Authority.class, authorityId);
-    }
-
-    @Override
-    public Authority getAuthority(String name) {
-        //not implemented yet
-        return null;
-    }
-
-    @Override
     @Transactional
-    public void saveAuthority(Authority authority) {
+    public Authority saveAuthority(Authority authority) {
         entityManager.persist(authority);
+        return authority;
     }
 
-    @Override
-    @Transactional
-    public void updateAuthority(Authority authority) {
-        entityManager.merge(authority);
-    }
-
-    @Override
-    @Transactional
-    public void removeAuthority(Authority authority) {
-        entityManager.remove(authority);
-    }
 }

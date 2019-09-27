@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <br/>
     <script>
         function confirmRemove() {
           if (!confirm("Czy na pewno chcesz usunąć tę kategorię?"))
@@ -18,12 +17,11 @@
             return true;
         }
     </script>
-
-    <div align="center">
-        <div style="width: 30%; float:left;">
-            <table title="Pora dnia">
+    <div class="mainContainer">
+        <div align="center">
+            <table class="cattegoryTable" title="Pora dnia">
                 <tr>
-                    <th colspan="3">Pora dnia</th>
+                    <th colspan="3">Pora</th>
                 </tr>
                 <tr th:each="cattegory : ${timeCattegories}">
                     <td><b th:text="${cattegory.name}"></b></td>
@@ -31,9 +29,7 @@
                     <td><a th:href="@{'/kategoria/modyfikuj/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
                 </tr>
             </table>
-        </div>
-        <div style="width: 30%; float:left;">
-            <table title="Diety" >
+            <table class="cattegoryTable" title="Diety" >
                 <tr>
                     <th colspan="3">Diety</th>
                 </tr>
@@ -43,11 +39,10 @@
                     <td><a th:href="@{'/kategoria/modyfikuj/usun/' + ${cattegory.id}}" onclick="return confirmRemove()">Usuń</a></td>
                 </tr>
             </table>
-        </div>
-        <div style="width: 30%; float:left;">
-            <table title="Dania">
+            <table class="cattegoryTable" title="Dania">
                 <tr>
                     <th colspan="3">Dania</th>
+
                 </tr>
                 <tr th:each="cattegory : ${mealCattegories}">
                     <td><b th:text="${cattegory.name}"></b></td>

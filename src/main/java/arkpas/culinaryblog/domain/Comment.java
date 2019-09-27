@@ -1,6 +1,7 @@
 package arkpas.culinaryblog.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Comment {
@@ -8,6 +9,8 @@ public class Comment {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(length = 1000)
+    @NotBlank
     private String text;
     @ManyToOne (targetEntity = Recipe.class)
     @JoinColumn (name = "recipe_id")

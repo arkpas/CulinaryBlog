@@ -30,7 +30,7 @@ public class UserDetails {
         return user;
     }
     public Set<Comment> getComments() {
-        return comments;
+        return Collections.unmodifiableSet(comments);
     }
     public Set<UserRate> getUserRates() {
         return Collections.unmodifiableSet(userRates);
@@ -42,33 +42,11 @@ public class UserDetails {
     public void setUser(User user) {
         this.user = user;
     }
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
 
     public void addComment (Comment comment) {
         if (comment != null) {
             comments.add(comment);
             comment.setUserDetails(this);
-        }
-    }
-
-    public void removeComment (Comment comment) {
-        comments.remove(comment);
-        comment.setUserDetails(null);
-    }
-
-    public void addUserRate (UserRate userRate) {
-        if (userRate != null) {
-            userRates.add(userRate);
-            userRate.setUserDetails(this);
-        }
-    }
-
-    public void removeUserRate (UserRate userRate) {
-        if (userRates.contains(userRate)) {
-            userRates.remove(userRate);
-            userRate.setUserDetails(null);
         }
     }
 }

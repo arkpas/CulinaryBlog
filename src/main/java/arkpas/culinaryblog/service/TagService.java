@@ -59,4 +59,12 @@ public class TagService {
     public void deleteTag (Tag tag) {
         tagRepository.removeTag(tag);
     }
+
+    public void updateTags(Recipe recipe, String tagsString) {
+        if (tagsString.length() > 0) {
+            recipe.removeAllTags();
+            recipeService.updateRecipe(recipe);
+            this.addTags(recipe, tagsString);
+        }
+    }
 }

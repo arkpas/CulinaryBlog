@@ -6,11 +6,39 @@ body {
     margin-bottom: 20px;
 }
 
+a {
+    text-decoration: underline;
+    color: orange;
+}
+
 .comment {
-    border-width: 2px;
-    border-color: #22b14d;
+    display: block;
+    width: 800px;
+    border-width: 1px;
+    border-color: orange;
     border-radius: 15px;
     border-style: solid;
+    background-color: white;
+    padding: 5px 10px 10px 10px;
+    margin: 5px 0 5px 0;
+}
+
+.commentUsername {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+
+
+.commentText {
+    display: block;
+    font-size: 15px;
+}
+
+.commentsAndRatingTable {
+    width: 1200px;
 }
 
 .mainContainer {
@@ -28,7 +56,7 @@ body {
     text-align: center;
     width: 300px;
     border-color: transparent;
-    border-width: 1px;
+    border-width: 2px;
     border-radius: 15px;
     border-style: solid;
     text-decoration: none;
@@ -43,7 +71,7 @@ body {
 .recipeMiniature:hover {
     background-color: darkorange;
     color: white;
-    border-color: darkorange;
+    border-color: black;
 }
 
 .miniatureImage {
@@ -96,3 +124,64 @@ body {
     color: black;
     margin: 0 1px;
 }
+
+.commentTextArea {
+    width: 820px;
+    height: 80px;
+}
+
+.cattegoryTable {
+    display: inline-flex;
+    margin: 20px;
+    position: relative;
+    border-color: darkorange;
+    border-width: 1px;
+    border-radius: 15px;
+    border-style: solid;
+    padding: 20px;
+    background-color: white;
+}
+
+.cattegoryTable a {
+    margin: 5px;
+}
+
+.commentRecipeName {
+    display: block;
+    font-size: 16px;
+    font-weight:bold;
+    margin: 0 0 5px 0;
+}
+
+.ratingRecipeName {
+    display: block;
+    font-weight: bold;
+}
+
+.ratingUserRateValue {
+    display: block;
+
+}
+
+.rating {
+    display: block;
+    border-width: 1px;
+    border-color: orange;
+    border-radius: 15px;
+    border-style: solid;
+    background-color: white;
+    padding: 5px 15px 5px 15px;
+    margin: 5px 0 5px 0;
+}
+
+.profileUsername {
+    display: inline-block;
+    font-size: 28px;
+    border-width: 1px;
+    border-color: orange;
+    border-radius: 15px;
+    border-style: solid;
+    background-color: white;
+    padding: 10px;
+}
+

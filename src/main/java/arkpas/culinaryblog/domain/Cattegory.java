@@ -4,6 +4,7 @@ import arkpas.culinaryblog.utils.CattegoryType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +32,9 @@ public class Cattegory {
     public CattegoryType getCattegoryType() {
         return cattegoryType;
     }
+    public Set<RecipeCattegory> getRecipes() {
+        return Collections.unmodifiableSet(recipes);
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -43,15 +47,9 @@ public class Cattegory {
     }
 
     public void addRecipeCattegory (RecipeCattegory recipeCattegory) {
-        recipes.add(recipeCattegory);
-        recipeCattegory.setCattegory(this);
-    }
-
-    public void removeRecipeCattegory (RecipeCattegory recipeCattegory) {
-        if (recipes.contains(recipeCattegory)) {
-            recipes.remove(recipeCattegory);
-            recipeCattegory.setCattegory(null);
+        if (recipeCattegory != null) {
+            recipes.add(recipeCattegory);
+            recipeCattegory.setCattegory(this);
         }
     }
-
 }

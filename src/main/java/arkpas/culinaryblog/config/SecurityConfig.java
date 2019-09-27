@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/przepis/dodaj", "/kategoria/dodaj", "/przepis/modyfikuj/**", "/kategoria/modyfikuj/**")
                 .hasAnyAuthority("blogger");
         httpSecurity.authorizeRequests()
-                .antMatchers("/przepis/dodajKomentarz")
+                .antMatchers("/przepis/dodajKomentarz", "/przepis/ocen", "/profile")
                 .authenticated();
         httpSecurity
                 .authorizeRequests()

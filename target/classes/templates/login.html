@@ -9,19 +9,22 @@
 </head>
 
 <body>
-<h2>LOGOWANIE</h2>
-<div class="form">
+<div class="mainContainer">
     <form th:action="@{/login}" method="post">
         <p th:if="${error}">Nieprawidłowa nazwa użytkownika lub hasło</p>
-        <div class="field">
-            <label>Nazwa: </label> <input type="text" id="username" name="username" autofocus="autofocus"/>
-        </div>
-        <div class="field">
-            <label>Haslo: </label>  <input type="password" id="password" name="password"/>
-        </div>
-        <div class="field">
-            <button type="submit">Zaloguj</button>
-        </div>
+        <table>
+            <tr>
+                <td><b>Nazwa</b></td>
+                <td><input type="text" id="username" name="username" autofocus="autofocus"/></td>
+            </tr>
+            <tr>
+                <td><b>Hasło</b></td>
+                <td><input type="password" id="password" name="password"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Zaloguj</button></td>
+            </tr>
+        </table>
     </form>
 </div>
 </body>

@@ -9,81 +9,83 @@
 </head>
 
 <body>
-    <form th:object="${recipe}" th:method="post" th:action="@{/przepis/modyfikuj/edytuj}">
-        <input th:type="hidden" th:field="*{id}" th:value="${recipe.id}"/>
-        <table>
-            <tbody>
-                <tr>
-                    <td><b>Nazwa dania </b></td>
-                    <td>
-                        <input type="text" th:placeholder="*{name}" th:field="*{name}"/>
-                        <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Tagi: </b></td>
-                    <td><i th:each="tag : *{tags}" th:text="${tag.tagName} + ' '"></i></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input style="width: 300;" type="text" th:placeholder="${'(wprowadź nowe tagi lub pozostaw puste)'}" th:name="tagsString"/></td>
-                </tr>
-                <tr>
-                    <td><b>Adres do obrazka</b></td>
-                    <td><input type="text" th:placeholder="*{imageLink}" th:field="*{imageLink}"/></td>
-                </tr>
-                <tr>
-                    <td><b>Pora dnia</b></td>
-                    <td>
-                        <select name="timeCattegoryId" >
-                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).TIME}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
-                            <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Typ diety </b></td>
-                    <td>
-                        <select name="dietCattegoryId" >
-                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).DIET}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
-                            <option th:each="dietCattegory : ${dietCattegories}" th:value="${dietCattegory.id}" th:text="${dietCattegory.name}"></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Typ posiłku </b></td>
-                    <td>
-                        <select name="mealCattegoryId" >
-                            <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).MEAL}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
-                            <option th:each="mealCattegory : ${mealCattegories}" th:value="${mealCattegory.id}" th:text="${mealCattegory.name}"></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Składniki </b>
-                        <i th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><textarea rows=20 cols="40" th:placeholder="*{ingredients}" th:field="*{ingredients}"></textarea></td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Instrukcje </b>
-                        <i th:if="${#fields.hasErrors('instruction')}" th:errors="*{instruction}"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3"><textarea rows=20 cols="120" th:placeholder="*{instruction}" th:field="*{instruction}"></textarea></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit">Zapisz</button>
-                        <a th:href="@{'/przepis/' + ${recipe.name}}"><button>Anuluj</button></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+    <div class="mainContainer">
+        <form th:object="${recipe}" th:method="post" th:action="@{/przepis/modyfikuj/edytuj}">
+            <input th:type="hidden" th:field="*{id}" th:value="${recipe.id}"/>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><b>Nazwa dania </b></td>
+                        <td>
+                            <input type="text" th:placeholder="*{name}" th:field="*{name}"/>
+                            <i th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Tagi: </b></td>
+                        <td><i th:each="tag : *{tags}" th:text="${tag.tagName} + ' '"></i></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input style="width: 300;" type="text" th:placeholder="${'(wprowadź nowe tagi lub pozostaw puste)'}" th:name="tagsString"/></td>
+                    </tr>
+                    <tr>
+                        <td><b>Adres do obrazka</b></td>
+                        <td><input type="text" th:placeholder="*{imageLink}" th:field="*{imageLink}"/></td>
+                    </tr>
+                    <tr>
+                        <td><b>Pora</b></td>
+                        <td>
+                            <select name="timeCattegoryId" >
+                                <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).TIME}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                                <option th:each="timeCattegory : ${timeCattegories}" th:value="${timeCattegory.id}" th:text="${timeCattegory.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Typ diety </b></td>
+                        <td>
+                            <select name="dietCattegoryId" >
+                                <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).DIET}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                                <option th:each="dietCattegory : ${dietCattegories}" th:value="${dietCattegory.id}" th:text="${dietCattegory.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Typ posiłku </b></td>
+                        <td>
+                            <select name="mealCattegoryId" >
+                                <option selected hidden th:each="cattegory : *{cattegories}" th:if="${cattegory.cattegory.cattegoryType == T(arkpas.culinaryblog.utils.CattegoryType).MEAL}" th:value="${cattegory.cattegory.id}" th:text="${cattegory.cattegory.name}"></option>
+                                <option th:each="mealCattegory : ${mealCattegories}" th:value="${mealCattegory.id}" th:text="${mealCattegory.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Składniki </b>
+                            <i th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><textarea rows=20 cols="40" th:placeholder="*{ingredients}" th:field="*{ingredients}"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Instrukcje </b>
+                            <i th:if="${#fields.hasErrors('instruction')}" th:errors="*{instruction}"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><textarea rows=20 cols="120" th:placeholder="*{instruction}" th:field="*{instruction}"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit">Zapisz</button>
+                            <a th:href="@{'/przepis/' + ${recipe.name}}"><button>Anuluj</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
