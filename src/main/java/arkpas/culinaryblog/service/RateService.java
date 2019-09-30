@@ -20,16 +20,20 @@ public class RateService {
         this.userService = userService;
     }
 
-    public void rateRecipe (Recipe recipe, int rate) {
-        User user = userService.getCurrentUser();
-        if (recipe != null && user != null && !isRated(recipe, user.getId())) {
+    public Recipe rateRecipe (Recipe recipe, int rate) {
+        if (recipe != null) {
+            User user = userService.getCurrentUser();
+            if (user != null && !isRated(recipe, user.getId())) {
                 UserRate userRate = new UserRate();
                 userRate.setRateValue(rate);
                 recipe.getRate().addUserRate(userRate);
                 userRate.setUserDetails(user.getUserDetails());
                 recipe.getRate().calculateRating();
                 recipeService.updateRecipe(recipe);
+                return recipe;
+            }
         }
+        return null;
     }
 
     //this method checks if recipe has been already rated by user

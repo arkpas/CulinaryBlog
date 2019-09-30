@@ -17,45 +17,33 @@ public class RateTest {
     }
 
     @Test
-    public void addUserRate () {
+    public void addUserRateShouldAddElementToSet () {
+        rate.addUserRate(new UserRate());
+        assertFalse(rate.getUserRates().isEmpty());
+    }
 
-        //set should be initially empty
+    @Test
+    public void addUserRateWithNullArgumentShouldNotAddElement () {
+        rate.addUserRate(null);
         assertTrue(rate.getUserRates().isEmpty());
+    }
 
-        UserRate userRate = null;
+    @Test
+    public void addUserRateShouldAssignReferenceInArgumentObject () {
+        UserRate userRate = new UserRate();
         rate.addUserRate(userRate);
-
-        //set should not save null elements
-        assertTrue(rate.getUserRates().isEmpty());
-
-        userRate = new UserRate();
-        rate.addUserRate(userRate);
-
-        //set should have 1 element now
-        assertEquals(1, rate.getUserRates().size());
-
-        //added element should have reference to his parent
         assertEquals(rate, userRate.getRate());
     }
 
     @Test
-    public void calculateRating () {
-        //votes and rating should be initially 0
-        assertEquals(0, rate.getVotes());
-        assertEquals(0, rate.getRating(), 0.01);
-
-
+    public void calculateRatingCalledWithoutSettingValuesShouldNotProduceArtithmeticException () {
         rate.calculateRating();
-        //votes and rating should be 0 after method call when there is no elements in set
-        assertEquals(0, rate.getVotes());
-        assertEquals(0, rate.getRating(), 0.01);
+    }
 
+    @Test
+    public void calculateRatingWithDataInSetShouldAssignValueToRatingField () {
         UserRate sample = new UserRate();
-        sample.setRateValue(4);
-        rate.addUserRate(sample);
-
-        sample = new UserRate();
-        sample.setRateValue(4);
+        sample.setRateValue(5);
         rate.addUserRate(sample);
 
         sample = new UserRate();
@@ -63,18 +51,26 @@ public class RateTest {
         rate.addUserRate(sample);
 
         rate.calculateRating();
-        //votes should be set to proper value
-        assertEquals(3, rate.getVotes());
-        //rating should be calculated properly
-        assertEquals(3.33, rate.getRating(), 0.01);
+        assertEquals(3.5, rate.getRating(), 0.001);
+    }
 
+    @Test
+    public void calculateRatingWithDataInSetShouldAssignValueToVotesField () {
+        UserRate sample = new UserRate();
+        sample.setRateValue(2);
+        rate.addUserRate(sample);
 
+        sample = new UserRate();
+        sample.setRateValue(3);
+        rate.addUserRate(sample);
+
+        rate.calculateRating();
+        assertEquals(2, rate.getVotes());
     }
 
 
-    //collection from getter should be unmodifiable
     @Test (expected = UnsupportedOperationException.class)
-    public void checkIfUnmodifiable () {
+    public void getUserRatesShouldReturnUnmodifiableSet () {
         Set<UserRate> set = rate.getUserRates();
         set.clear();
     }

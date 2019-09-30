@@ -16,25 +16,40 @@ public class UserTest {
     }
 
     @Test
-    public void setUserDetails () {
-
-        //check for nullpointerexception
-        user.setUserDetails(null);
-
+    public void setUserDetailsShouldAssignObjectToField () {
         UserDetails userDetails = new UserDetails();
         user.setUserDetails(userDetails);
-
-        //both objects should have set references to each other
         assertEquals(userDetails, user.getUserDetails());
-        assertEquals(user, userDetails.getUser());
+    }
 
+    @Test
+    public void setUserDetailsShouldAssignReferenceInArgumentObject () {
+        UserDetails userDetails = new UserDetails();
+        user.setUserDetails(userDetails);
+        assertEquals(user, userDetails.getUser());
+    }
+
+    @Test
+    public void setUserDetailsShouldRemoveReferenceFromOldObjectWhenNewObjectIsAssigned () {
+        UserDetails oldObject = new UserDetails();
+        user.setUserDetails(oldObject);
+        user.setUserDetails(new UserDetails());
+
+        assertNull(oldObject.getUser());
+    }
+
+    @Test
+    public void setUserDetailsShouldRemoveReferenceFromOldObjectWhenNullIsAssigned () {
+        UserDetails oldObject = new UserDetails();
+        user.setUserDetails(oldObject);
         user.setUserDetails(null);
 
-        //references in both objects should be nulified
-        assertNull(user.getUserDetails());
-        assertNull(userDetails.getUser());
+        assertNull(oldObject.getUser());
+    }
 
-
+    @Test
+    public void setUserDetailsShouldNotThrowNullpointerExceptionWithNullArgument () {
+        user.setUserDetails(null);
     }
 
 }

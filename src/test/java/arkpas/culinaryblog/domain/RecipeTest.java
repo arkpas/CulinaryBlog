@@ -3,10 +3,6 @@ package arkpas.culinaryblog.domain;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Set;
-
 import static org.junit.Assert.*;
 
 public class RecipeTest {
@@ -18,152 +14,169 @@ public class RecipeTest {
         recipe = new Recipe();
     }
 
+    //setDateTime method tests
+
     @Test
-    public void setRate () {
+    public void setDateTimeShouldAssignValueToField () {
+        recipe.setDateTime();
+        assertNotNull(recipe.getDateTime());
+    }
 
-        //check for nullpointerexception
-        recipe.setRate(null);
+    //setRate method tests
 
+    @Test
+    public void setRateShouldAssignObjectToRateField () {
+        recipe.setRate(new Rate());
+        assertNotNull(recipe.getRate());
+    }
+
+    @Test
+    public void setRateShouldAssignReferenceToArgumentObject () {
         Rate rate = new Rate();
         recipe.setRate(rate);
-
-        assertEquals(rate, recipe.getRate());
-        //parent setter should also call childs setter
         assertEquals(recipe, rate.getRecipe());
+    }
 
+    @Test
+    public void setRateShouldRemoveReferenceFromOldObjectWhenNewObjectIsAssigned () {
+        Rate oldRate = new Rate();
+        recipe.setRate(oldRate);
+        recipe.setRate(new Rate());
+
+        assertNull(oldRate.getRecipe());
+    }
+
+    @Test
+    public void setRateShouldRemoveReferenceFromOldObjectWhenNullIsAssigned () {
+        Rate oldRate = new Rate();
+        recipe.setRate(oldRate);
         recipe.setRate(null);
 
-        //setting null should nulify references in both objects
-        assertNull(recipe.getRate());
-        assertNull(rate.getRecipe());
-
+        assertNull(oldRate.getRecipe());
     }
 
     @Test
-    public void addCommnet () {
-        Comment comment = null;
+    public void setRateShouldNotProduceNullpointerExceptionWhenNullArgumentsAreUsed () {
+        recipe.setRate(null);
+    }
 
-        //set should be initially empty
-        assertTrue(recipe.getComments().isEmpty());
+    //addComment method tests
 
+    @Test
+    public void addCommentShouldAddElementToSet () {
+        Comment comment = new Comment();
         recipe.addComment(comment);
-        //set should not add null elements
+        assertTrue(recipe.getComments().contains(comment));
+    }
+
+    @Test
+    public void addCommentShouldNotAddNullElementToSet () {
+        recipe.addComment(null);
         assertTrue(recipe.getComments().isEmpty());
+    }
 
-        comment = new Comment();
-
+    @Test
+    public void addCommentShouldAssignReferenceInArgumentObject () {
+        Comment comment = new Comment();
         recipe.addComment(comment);
-        //set should have an element now
-        assertEquals(1, recipe.getComments().size());
-        //parent reference should be set in child object
         assertEquals(recipe, comment.getRecipe());
+    }
 
+
+    //addRecipeCattegory method tests
+
+    @Test
+    public void addRecipeCattegoryShouldAddElementToSet () {
+        RecipeCattegory recipeCattegory = new RecipeCattegory();
+        recipe.addRecipeCattegory(recipeCattegory);
+        assertTrue(recipe.getCattegories().contains(recipeCattegory));
     }
 
     @Test
-    public void addRecipeCattegory () {
-        RecipeCattegory recipeCattegory = null;
-
-        //set should be initially empty
+    public void addRecipeCattegoryShouldNotAddNullElementToSet () {
+        recipe.addRecipeCattegory(null);
         assertTrue(recipe.getCattegories().isEmpty());
+    }
 
+    @Test
+    public void addRecipeCattegoryShouldAssignReferenceInArgumentObject () {
+        RecipeCattegory recipeCattegory = new RecipeCattegory();
         recipe.addRecipeCattegory(recipeCattegory);
-        //set should not add null elements
-        assertTrue(recipe.getCattegories().isEmpty());
-
-        recipeCattegory = new RecipeCattegory();
-
-        recipe.addRecipeCattegory(recipeCattegory);
-        //set should have an element now
-        assertEquals(1, recipe.getCattegories().size());
-        //parent reference should be set in child object
         assertEquals(recipe, recipeCattegory.getRecipe());
     }
 
+    //removeAllRecipeCattegories method tests
+
     @Test
-    public void removeAllRecipeCattegories() {
-
-        //called on empty set should not produce any exceptions
+    public void removeAllRecipeCattegoriesShouldDeleteAllElementsFromSet () {
+        recipe.addRecipeCattegory(new RecipeCattegory());
+        recipe.addRecipeCattegory(new RecipeCattegory());
         recipe.removeAllRecipeCattegories();
-
-        RecipeCattegory sample1 = new RecipeCattegory();
-        RecipeCattegory sample2 = new RecipeCattegory();
-
-        recipe.addRecipeCattegory(sample1);
-        recipe.addRecipeCattegory(sample2);
-
-        //samples should have reference to parent
-        assertEquals(recipe, sample1.getRecipe());
-        assertEquals(recipe, sample2.getRecipe());
-
-        recipe.removeAllRecipeCattegories();
-
-        //set should be empty now
         assertTrue(recipe.getCattegories().isEmpty());
-
-        //parent references should be set to null
-        assertNull(sample1.getRecipe());
-        assertNull(sample2.getRecipe());
     }
 
     @Test
-    public void addTag () {
-        Tag tag = null;
+    public void removeAllRecipeCattegoriesShouldNulifyReferencesInRemovedObjects () {
+        RecipeCattegory recipeCattegory = new RecipeCattegory();
+        recipe.addRecipeCattegory(recipeCattegory);
+        recipe.removeAllRecipeCattegories();
+        assertNull(recipeCattegory.getRecipe());
+    }
 
-        //set should be initially empty
-        assertTrue(recipe.getTags().isEmpty());
+    //addTag method tests
 
+    @Test
+    public void addTagShouldAddElementToSet () {
+        Tag tag = new Tag();
         recipe.addTag(tag);
-        //set should not add null elements
+        assertTrue(recipe.getTags().contains(tag));
+    }
+
+    @Test
+    public void addTagShouldNotAddNullElementToSet () {
+        recipe.addTag(null);
         assertTrue(recipe.getTags().isEmpty());
+    }
 
-        tag = new Tag();
-
+    @Test
+    public void addTagShouldAssignReferenceInArgumentObject () {
+        Tag tag = new Tag();
         recipe.addTag(tag);
-        //set should have an element now
-        assertEquals(1, recipe.getTags().size());
-        //parent reference should be set in child object
         assertEquals(recipe, tag.getRecipe());
     }
 
+    //removeAllTags method tests
+
     @Test
-    public void removeAllTags() {
-
-        //called on empty set should not produce any exceptions
+    public void removeAllTagsShouldDeleteAllElementsFromSet () {
+        recipe.addTag(new Tag());
+        recipe.addTag(new Tag());
         recipe.removeAllTags();
-
-        Tag sample1 = new Tag();
-        Tag sample2 = new Tag();
-
-        recipe.addTag(sample1);
-        recipe.addTag(sample2);
-
-        //samples should have reference to parent
-        assertEquals(recipe, sample1.getRecipe());
-        assertEquals(recipe, sample2.getRecipe());
-
-        recipe.removeAllTags();
-
-        //set should be empty now
         assertTrue(recipe.getTags().isEmpty());
-
-        //parent references should be set to null
-        assertNull(sample1.getRecipe());
-        assertNull(sample2.getRecipe());
     }
 
+    @Test
+    public void removeAllTagsShouldNulifyReferencesInRemovedObjects () {
+        Tag tag = new Tag();
+        recipe.addTag(tag);
+        recipe.removeAllTags();
+        assertNull(tag.getRecipe());
+    }
+
+    //collection getters tests
+
     @Test(expected = UnsupportedOperationException.class)
-    public void checkIfCommentsAreUnmodifiable() {
+    public void getCommentsShouldReturnUnmodifiableSet () {
         recipe.getComments().clear();
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void checkIfCattegoriesAreUnmodifiable() {
+    public void getCattegoriesShouldReturnUnmodifiableSet () {
         recipe.getCattegories().clear();
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void checkIfTagsAreUnmodifiable() {
+    public void getTagsShouldReturnUnmodifiableSet () {
         recipe.getTags().clear();
     }
 

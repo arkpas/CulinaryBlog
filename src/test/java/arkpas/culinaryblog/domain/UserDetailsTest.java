@@ -15,34 +15,39 @@ public class UserDetailsTest {
         userDetails = new UserDetails();
     }
 
+
+    //addComment method tests
+
     @Test
-    public void addComment () {
-        //set should be initially empty
-        assertTrue(userDetails.getComments().isEmpty());
+    public void addCommentShouldAddObjectToSet () {
 
-        Comment comment = null;
+        Comment comment = new Comment();
         userDetails.addComment(comment);
+        assertTrue(userDetails.getComments().contains(comment));
+    }
 
-        //set should not save null elements
+    @Test
+    public void addCommentShouldNotAddNullObjectToSet () {
+        userDetails.addComment(null);
         assertTrue(userDetails.getComments().isEmpty());
+    }
 
-        comment = new Comment();
+    @Test
+    public void addCommentShouldSetReferenceInArgumentObject () {
+        Comment comment = new Comment();
         userDetails.addComment(comment);
-
-        //set should have 1 element now
-        assertEquals(1, userDetails.getComments().size());
-
-        //added element should have reference to his parent
         assertEquals(userDetails, comment.getUserDetails());
     }
 
+   //collection getters tests
+
     @Test(expected = UnsupportedOperationException.class)
-    public void checkIfCommentsAreUnmodifiable() {
+    public void getCommentsShouldReturnUnmodifiableSet () {
         userDetails.getComments().clear();
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void checkIfUserRatesAreUnmodifiable() {
+    public void getUserRatesShouldReturnUnmodifiableSet() {
         userDetails.getUserRates().clear();
     }
 

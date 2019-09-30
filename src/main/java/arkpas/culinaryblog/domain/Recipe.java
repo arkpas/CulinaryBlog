@@ -42,7 +42,7 @@ public class Recipe {
 
 
     public Recipe () {
-
+        this.setRate(new Rate());
     }
 
     public int getId() {
@@ -97,15 +97,12 @@ public class Recipe {
     }
 
     public void setRate(Rate rate) {
-        if (rate == null) {
-            if (this.rate != null) {
-                this.rate.setRecipe(null);
-            }
-        }
-        else {
+        if (this.rate != null)
+            this.rate.setRecipe(null);
+        if (rate != null)
             rate.setRecipe(this);
-        }
         this.rate = rate;
+
     }
 
     public void addComment (Comment comment) {

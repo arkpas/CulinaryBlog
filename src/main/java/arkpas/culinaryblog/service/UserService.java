@@ -56,9 +56,6 @@ public class UserService {
             user.setUsername(username);
             user.setPassword(password);
 
-            UserDetails userDetails = new UserDetails();
-            user.setUserDetails(userDetails);
-
             userRepository.saveUser(user);
             authorityService.addAuthority(username, authority);
             return null;

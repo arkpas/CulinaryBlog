@@ -20,6 +20,10 @@ public class User {
     @OneToOne (mappedBy = "user", targetEntity = UserDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private UserDetails userDetails;
 
+    public User () {
+        this.setUserDetails(new UserDetails());
+    }
+
     public int getId() {
         return id;
     }
@@ -43,14 +47,10 @@ public class User {
         this.password = password;
     }
     public void setUserDetails(UserDetails userDetails) {
-        if (userDetails == null) {
-            if (this.userDetails != null) {
-                this.userDetails.setUser(null);
-            }
-        }
-        else {
+        if (this.userDetails != null)
+            this.userDetails.setUser(null);
+        if (userDetails != null)
             userDetails.setUser(this);
-        }
         this.userDetails = userDetails;
     }
 }

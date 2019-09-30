@@ -44,12 +44,16 @@ public class CattegoryService {
     }
 
     public Cattegory updateCattegoryPartially(Cattegory cattegory) {
-        Cattegory originalCattegory = this.getCattegory(cattegory.getId());
-        if (originalCattegory != null) {
-            originalCattegory.setName(cattegory.getName());
-            originalCattegory.setCattegoryType(cattegory.getCattegoryType());
-            this.updateCattegory(originalCattegory);
+        if (cattegory != null) {
+            Cattegory originalCattegory = this.getCattegory(cattegory.getId());
+            if (originalCattegory != null) {
+                originalCattegory.setName(cattegory.getName());
+                originalCattegory.setCattegoryType(cattegory.getCattegoryType());
+                this.updateCattegory(originalCattegory);
+            }
+            return originalCattegory;
         }
-        return originalCattegory;
+        else
+            return null;
     }
 }

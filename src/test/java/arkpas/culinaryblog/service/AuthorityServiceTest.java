@@ -7,11 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AuthorityServiceTest {
@@ -28,17 +28,18 @@ public class AuthorityServiceTest {
     }
 
     @Test
-    public void addAuthority() {
+    public void addAuthorityShouldReturnObjectWithUsernameSameAsArgument () {
         String username = "sampleUsername";
-        String authorityName = "sampleAuthorityName";
-
-        Authority authority = authorityService.addAuthority(username, authorityName);
-
-        //check if authority consists of the same data
+        Authority authority = authorityService.addAuthority(username, null);
         assertEquals(username, authority.getUsername());
-        assertEquals(authorityName, authority.getName());
     }
 
+    @Test
+    public void addAuthorityShouldReturnObjectWithAuthoritySameAsArgument () {
+        String authorityName = "sampleAuthority";
+        Authority authority = authorityService.addAuthority(null, authorityName);
+        assertEquals(authorityName, authority.getName());
+    }
 
 
 }

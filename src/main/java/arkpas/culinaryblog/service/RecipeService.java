@@ -37,12 +37,7 @@ public class RecipeService {
     }
 
     public void addRecipe (Recipe recipe) {
-
-        Rate rate = new Rate();
-
-        recipe.setRate(rate);
         recipe.setDateTime();
-
         recipeRepository.saveRecipe(recipe);
     }
 

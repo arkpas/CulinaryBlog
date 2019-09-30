@@ -13,11 +13,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CattegoryServiceTest {
@@ -32,50 +30,92 @@ public class CattegoryServiceTest {
         cattegoryService = new CattegoryService(cattegoryRepository);
     }
 
-    @Test
-    public void getCattegoriesByCattegoryType () {
-        List<Cattegory> cattegorySampleList = new ArrayList<>();
-        Cattegory sample1 = new Cattegory();
-        sample1.setCattegoryType(CattegoryType.TIME);
-        Cattegory sample2 = new Cattegory();
-        sample2.setCattegoryType(CattegoryType.MEAL);
 
-        cattegorySampleList.add(sample1);
-        cattegorySampleList.add(sample2);
+    //getCattegoriesByCattegoryType method tests
+
+    @Test
+    public void getCattegoriesByCattegoryTypeShouldFilterObjectsProperly () {
+
+        List<Cattegory> cattegorySampleList = new ArrayList<>();
+        int timeCattegoryElements = 10;
+        int mealCattegoryElements = 15;
+        int dietCattegoryElements = 13;
+
+        for (int i = 0; i < timeCattegoryElements; i++) {
+            Cattegory sample = new Cattegory();
+            sample.setCattegoryType(CattegoryType.TIME);
+            cattegorySampleList.add(sample);
+        }
+
+        for (int i = 0; i < mealCattegoryElements; i++) {
+            Cattegory sample = new Cattegory();
+            sample.setCattegoryType(CattegoryType.MEAL);
+            cattegorySampleList.add(sample);
+        }
+
+        for (int i = 0; i < dietCattegoryElements; i++) {
+            Cattegory sample = new Cattegory();
+            sample.setCattegoryType(CattegoryType.DIET);
+            cattegorySampleList.add(sample);
+        }
 
         doReturn(cattegorySampleList).when(cattegoryRepository).getCattegories();
 
-        //check if service filters cattegories properly
-        assertEquals(1, cattegoryService.getCattegories(CattegoryType.TIME).size());
-        assertEquals(1, cattegoryService.getCattegories(CattegoryType.MEAL).size());
-        assertTrue(cattegoryService.getCattegories(CattegoryType.DIET).isEmpty());
-        
+
+        assertEquals(timeCattegoryElements, cattegoryService.getCattegories(CattegoryType.TIME).size());
+        assertEquals(mealCattegoryElements, cattegoryService.getCattegories(CattegoryType.MEAL).size());
+        assertEquals(dietCattegoryElements, cattegoryService.getCattegories(CattegoryType.DIET).size());
+
     }
-    
+
+    //updateCattegoryPartially method tests
+
     @Test
-    public void updateCattegoryPartially () {
-        
-        Cattegory originalCattegory = new Cattegory();
-        originalCattegory.setCattegoryType(CattegoryType.DIET);
-        originalCattegory.setName("originalCattegory");
-        originalCattegory.addRecipeCattegory(new RecipeCattegory());
+    public void updateCattegoryPartiallyShouldReturnObjectWithChangedValues () {
+        Cattegory cattegory = new Cattegory();
+        cattegory.setName("old");
+        cattegory.setCattegoryType(CattegoryType.DIET);
 
-        doReturn(originalCattegory).when(cattegoryRepository).getCattegory(anyInt());
+        doReturn(cattegory).when(cattegoryRepository).getCattegory(anyInt());
 
-        Cattegory changedCattegory = new Cattegory();
+        Cattegory newCattegory = new Cattegory();
+        newCattegory.setName("new");
+        newCattegory.setCattegoryType(CattegoryType.MEAL);
 
-        //we set different name and CattegoryType for this one
-        changedCattegory.setCattegoryType(CattegoryType.MEAL);
-        changedCattegory.setName("changedCattegory");
+        cattegoryService.updateCattegoryPartially(newCattegory);
 
-        cattegoryService.updateCattegoryPartially(changedCattegory);
+        assertEquals(newCattegory.getName(), cattegory.getName());
+        assertEquals(newCattegory.getCattegoryType(), cattegory.getCattegoryType());
 
-        //now originalCattegory should be updated with information from changedCattegory
-        assertEquals(originalCattegory.getName(), changedCattegory.getName());
-        assertEquals(originalCattegory.getCattegoryType(), changedCattegory.getCattegoryType());
+    }
 
-        //also originalCattegory should maintain his RecipeCattegory collection
-        assertEquals(1, originalCattegory.getRecipes().size());
-        
+    @Test
+    public void updateCattegoryPartiallyShouldNotChangeRecipeCattegorySet () {
+        Cattegory cattegory = new Cattegory();
+        cattegory.addRecipeCattegory(new RecipeCattegory());
+        cattegory.addRecipeCattegory(new RecipeCattegory());
+
+        doReturn(cattegory).when(cattegoryRepository).getCattegory(anyInt());
+
+        Cattegory newCattegory = new Cattegory();
+        newCattegory.addRecipeCattegory(new RecipeCattegory());
+
+        cattegoryService.updateCattegoryPartially(newCattegory);
+
+        assertEquals(2, cattegory.getRecipes().size());
+
+    }
+
+    @Test
+    public void updateCattegoryPartiallyShouldReturnNullIfArgumentIsNull () {
+        assertNull(cattegoryService.updateCattegoryPartially(null));
+    }
+
+    @Test
+    public void updateCattegoryPartiallyShouldReturnNullIfQueriedCattegoryDoesNotExist () {
+        doReturn(null).when(cattegoryRepository).getCattegory(anyInt());
+
+        Cattegory newCattegory = new Cattegory();
+        assertNull(cattegoryService.updateCattegoryPartially(newCattegory));
     }
 }

@@ -33,65 +33,78 @@ public class CommentServiceTest {
     public void setup () {
         commentService = new CommentService(commentRepository, recipeService, userService);
     }
+
     @Test
-    public void addComment () {
+    public void addCommentShouldReturnNullWhenArgumentIsNull () {
+        doReturn(new User()).when(userService).getCurrentUser();
+        doReturn(new Recipe()).when(recipeService).getRecipe(anyInt());
+
+        assertNull(commentService.addComment(1, null));
+    }
+
+    @Test
+    public void addCommentShouldReturnNullIfRecipeDoesNotExist () {
+        doReturn(new User()).when(userService).getCurrentUser();
+        doReturn(null).when(recipeService).getRecipe(anyInt());
+
+        assertNull(commentService.addComment(1, new Comment()));
+    }
+
+    @Test
+    public void addCommentShouldReturnNullIfUserIsNull () {
+        doReturn(null).when(userService).getCurrentUser();
+        doReturn(new Recipe()).when(recipeService).getRecipe(anyInt());
+
+        assertNull(commentService.addComment(1, new Comment()));
+    }
+
+    @Test
+    public void addCommentShouldReturnNullIfUserHasNoUserDetails () {
         User user = new User();
-        UserDetails userDetails = new UserDetails();
-        user.setUserDetails(userDetails);
+        user.setUserDetails(null);
+        doReturn(user).when(userService).getCurrentUser();
+        doReturn(new Recipe()).when(recipeService).getRecipe(anyInt());
+
+        assertNull(commentService.addComment(1, new Comment()));
+    }
+
+    @Test
+    public void addCommentShouldAddElementToSetInRecipe () {
+        User user = new User();
+        doReturn(user).when(userService).getCurrentUser();
 
         Recipe recipe = new Recipe();
-
-        doReturn(user).when(userService).getCurrentUser();
         doReturn(recipe).when(recipeService).getRecipe(anyInt());
-        doNothing().when(commentRepository).saveComment(any(Comment.class));
 
-        Comment comment = new Comment();
-        comment.setText("sample comment");
+        commentService.addComment(1, new Comment());
 
-        Comment result = commentService.addComment(0, comment);
-
-        //result should not be null
-        assertNotNull(result);
-
-        //comment should now have references to recipe and userDetails
-        assertEquals(userDetails, comment.getUserDetails());
-        assertEquals(recipe, comment.getRecipe());
-
-        //comment should be added to collection in recipe object
         assertEquals(1, recipe.getComments().size());
-        //comment should be added to collection in userDetails object
-        assertEquals(1, userDetails.getComments().size());
-
     }
 
     @Test
-    public void addCommentWithNulls () {
-        User user = null;
-        Recipe recipe = null;
-
+    public void addCommentShouldAddElementToSetInUserDetails () {
+        User user = new User();
         doReturn(user).when(userService).getCurrentUser();
+
+        Recipe recipe = new Recipe();
         doReturn(recipe).when(recipeService).getRecipe(anyInt());
 
-        Comment comment = null;
+        commentService.addComment(1, new Comment());
 
-        Comment result = commentService.addComment(0, comment);
-        //result should be null, because user, recipe and comment are null
-        assertNull(result);
-
-        recipe = new Recipe();
-        result = commentService.addComment(0, comment);
-        //result should still be null, because user and comment are null
-        assertNull(result);
-
-        comment = new Comment();
-        result = commentService.addComment(0, comment);
-        //result should still be null, because user is null
-        assertNull(result);
-
-        user = new User();
-        result = commentService.addComment(0, comment);
-        //result should still be null, because user has no userDetails set
-        assertNull(result);
-
+        assertEquals(1, user.getUserDetails().getComments().size());
     }
+
+    @Test
+    public void addCommentShouldReturnCommentIfSuccess () {
+        User user = new User();
+        doReturn(user).when(userService).getCurrentUser();
+
+        Recipe recipe = new Recipe();
+        doReturn(recipe).when(recipeService).getRecipe(anyInt());
+
+        Comment comment = new Comment();
+
+        assertEquals(comment, commentService.addComment(1, comment));
+    }
+
 }
