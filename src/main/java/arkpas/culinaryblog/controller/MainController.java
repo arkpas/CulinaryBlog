@@ -3,7 +3,6 @@ package arkpas.culinaryblog.controller;
 
 import arkpas.culinaryblog.domain.Cattegory;
 import arkpas.culinaryblog.domain.Recipe;
-import arkpas.culinaryblog.domain.repository.RecipeRepository;
 import arkpas.culinaryblog.service.CattegoryService;
 import arkpas.culinaryblog.service.RecipeService;
 import arkpas.culinaryblog.utils.CattegoryType;

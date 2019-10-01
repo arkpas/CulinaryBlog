@@ -1,20 +1,14 @@
 package arkpas.culinaryblog.application;
 
 import arkpas.culinaryblog.domain.Cattegory;
-import arkpas.culinaryblog.domain.Comment;
 import arkpas.culinaryblog.domain.Recipe;
-import arkpas.culinaryblog.domain.repository.RecipeRepository;
 import arkpas.culinaryblog.service.CattegoryService;
-import arkpas.culinaryblog.service.RecipeCattegoryService;
 import arkpas.culinaryblog.service.RecipeService;
 import arkpas.culinaryblog.service.UserService;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class Starter implements CommandLineRunner {

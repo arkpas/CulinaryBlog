@@ -1,7 +1,8 @@
-package arkpas.culinaryblog.service;
+package arkpas.culinaryblog.serviceUnitTests;
 
-import arkpas.culinaryblog.domain.Authority;
 import arkpas.culinaryblog.domain.repository.AuthorityRepository;
+import arkpas.culinaryblog.domain.Authority;
+import arkpas.culinaryblog.service.AuthorityService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

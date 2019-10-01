@@ -1,7 +1,6 @@
 package arkpas.culinaryblog.service;
 
 import arkpas.culinaryblog.domain.User;
-import arkpas.culinaryblog.domain.UserDetails;
 import arkpas.culinaryblog.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -19,10 +18,6 @@ public class UserService {
     public UserService(UserRepository userRepository, AuthorityService authorityService) {
         this.userRepository = userRepository;
         this.authorityService = authorityService;
-    }
-
-    public User getUser (int userId) {
-        return userRepository.getUser(userId);
     }
 
     public User getUser (String username) {
@@ -63,13 +58,5 @@ public class UserService {
         else {
             return "Wprowadzone hasła nie są identyczne!";
         }
-
     }
-    public void updateUser (User user) {
-        userRepository.updateUser(user);
-    }
-    public void deleteUser (User user) {
-        userRepository.removeUser(user);
-    }
-
 }

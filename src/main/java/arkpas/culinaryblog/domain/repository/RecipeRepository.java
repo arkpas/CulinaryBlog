@@ -1,6 +1,5 @@
 package arkpas.culinaryblog.domain.repository;
 
-import arkpas.culinaryblog.domain.Comment;
 import arkpas.culinaryblog.domain.Recipe;
 
 import java.util.List;

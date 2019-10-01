@@ -1,5 +1,6 @@
-package arkpas.culinaryblog.domain;
+package arkpas.culinaryblog.domainUnitTests;
 
+import arkpas.culinaryblog.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 

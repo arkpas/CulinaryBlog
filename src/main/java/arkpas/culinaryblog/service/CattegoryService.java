@@ -1,7 +1,6 @@
 package arkpas.culinaryblog.service;
 
 import arkpas.culinaryblog.domain.Cattegory;
-import arkpas.culinaryblog.domain.Recipe;
 import arkpas.culinaryblog.domain.repository.CattegoryRepository;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,20 +1,22 @@
-package arkpas.culinaryblog.service;
+package arkpas.culinaryblog.serviceUnitTests;
 
 import arkpas.culinaryblog.domain.Comment;
 import arkpas.culinaryblog.domain.Recipe;
-import arkpas.culinaryblog.domain.User;
-import arkpas.culinaryblog.domain.UserDetails;
 import arkpas.culinaryblog.domain.repository.CommentRepository;
+import arkpas.culinaryblog.domain.User;
+import arkpas.culinaryblog.service.CommentService;
+import arkpas.culinaryblog.service.RecipeService;
+import arkpas.culinaryblog.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -37,7 +39,7 @@ public class CommentServiceTest {
     @Test
     public void addCommentShouldReturnNullWhenArgumentIsNull () {
         doReturn(new User()).when(userService).getCurrentUser();
-        doReturn(new Recipe()).when(recipeService).getRecipe(anyInt());
+        Mockito.doReturn(new Recipe()).when(recipeService).getRecipe(anyInt());
 
         assertNull(commentService.addComment(1, null));
     }

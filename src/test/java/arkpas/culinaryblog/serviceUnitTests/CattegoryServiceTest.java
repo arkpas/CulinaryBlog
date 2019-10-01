@@ -1,8 +1,9 @@
-package arkpas.culinaryblog.service;
+package arkpas.culinaryblog.serviceUnitTests;
 
 import arkpas.culinaryblog.domain.Cattegory;
 import arkpas.culinaryblog.domain.RecipeCattegory;
 import arkpas.culinaryblog.domain.repository.CattegoryRepository;
+import arkpas.culinaryblog.service.CattegoryService;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.junit.Before;
 import org.junit.Test;

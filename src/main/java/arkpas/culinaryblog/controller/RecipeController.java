@@ -1,6 +1,9 @@
 package arkpas.culinaryblog.controller;
 
-import arkpas.culinaryblog.domain.*;
+import arkpas.culinaryblog.domain.Cattegory;
+import arkpas.culinaryblog.domain.Comment;
+import arkpas.culinaryblog.domain.Recipe;
+import arkpas.culinaryblog.domain.User;
 import arkpas.culinaryblog.service.*;
 import arkpas.culinaryblog.utils.CattegoryType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.HashSet;

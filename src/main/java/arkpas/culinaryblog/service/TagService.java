@@ -23,20 +23,16 @@ public class TagService {
         this.recipeService = recipeService;
     }
 
-    public Tag getTag (int id) {
-        return tagRepository.getTag(id);
-    }
-    public Tag getTag (String name) {
-        return tagRepository.getTag(name);
-    }
+    public Tag addTag(Recipe recipe, String tagName) {
+        if (recipe == null || tagName == null)
+            return null;
 
-    public void addTag(Recipe recipe, String tagName) {
-        if (recipe != null && tagName != null) {
-            Tag tag = new Tag();
-            tag.setTagName(tagName);
-            recipe.addTag(tag);
-            recipeService.updateRecipe(recipe);
-        }
+        Tag tag = new Tag();
+        tag.setTagName(tagName);
+        recipe.addTag(tag);
+        recipeService.updateRecipe(recipe);
+        return tag;
+
     }
     public void addTags(Recipe recipe, String tags) {
         if (tags != null && tags.length() > 0)
@@ -45,23 +41,19 @@ public class TagService {
     }
 
     public Set<Recipe> getRecipesByTag (String tag) {
-        List<Tag> tagList = tagRepository.getTags(tag);
+
         Set<Recipe> recipes = new HashSet<>();
+        if (tag == null || tag.length() == 0)
+            return recipes;
+
+        List<Tag> tagList = tagRepository.getTags(tag);
         if (!tagList.isEmpty())
             recipes.addAll(tagList.stream().map(Tag::getRecipe).collect(Collectors.toSet()));
         return recipes;
     }
 
-    public void updateTag (Tag tag) {
-        tagRepository.updateTag(tag);
-    }
-
-    public void deleteTag (Tag tag) {
-        tagRepository.removeTag(tag);
-    }
-
     public void updateTags(Recipe recipe, String tagsString) {
-        if (tagsString.length() > 0) {
+        if (recipe != null && tagsString != null && tagsString.length() > 0) {
             recipe.removeAllTags();
             recipeService.updateRecipe(recipe);
             this.addTags(recipe, tagsString);
