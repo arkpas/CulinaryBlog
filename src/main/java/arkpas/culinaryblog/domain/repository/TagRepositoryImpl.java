@@ -15,41 +15,8 @@ public class TagRepositoryImpl implements TagRepository {
     EntityManager entityManager;
 
     @Override
-    public Tag getTag(int tagId) {
-        return entityManager.find(Tag.class, tagId);
-    }
-
-    @Override
-    public Tag getTag(String name) {
-        //not implemented yet
-        return null;
-    }
-
-    @Override
     public List<Tag> getTags(String name) {
         return entityManager.createQuery("SELECT t FROM Tag AS t WHERE lower(tagName) = lower(:name)", Tag.class).setParameter("name", name).getResultList();
     }
 
-    @Override
-    public List<Tag> getTagsByRecipe(int recipeId) {
-        return entityManager.createQuery("SELECT t FROM Tag AS t WHERE recipe_id = :recipeId", Tag.class).setParameter("recipeId", recipeId).getResultList();
-    }
-
-    @Override
-    @Transactional
-    public void saveTag(Tag tag) {
-        entityManager.persist(tag);
-    }
-
-    @Override
-    @Transactional
-    public void updateTag(Tag tag) {
-        entityManager.merge(tag);
-    }
-
-    @Override
-    @Transactional
-    public void removeTag(Tag tag) {
-        entityManager.remove(tag);
-    }
 }

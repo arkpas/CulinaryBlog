@@ -10,10 +10,8 @@ import javax.transaction.Transactional;
 
 @Repository
 public class AuthorityRepositoryImpl implements AuthorityRepository {
-
     @PersistenceContext
     EntityManager entityManager;
-
     @Autowired
     public AuthorityRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -25,5 +23,7 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
         entityManager.persist(authority);
         return authority;
     }
+
+
 
 }

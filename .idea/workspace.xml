@@ -3,76 +3,57 @@
   <component name="ChangeListManager">
     <list default="true" id="5a5c98d4-6a9f-4f25-9683-522765d14cb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/application/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CattegoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CattegoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Authority.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Cattegory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Cattegory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Rate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Rate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/RecipeCattegory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/RecipeCattegory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/UserRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/AuthorityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/AuthorityRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/AuthorityRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/AuthorityRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CattegoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CattegoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CattegoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CattegoryRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CommentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CommentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/CommentRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/RecipeRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/TagRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/TagRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/TagRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/domain/repository/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/AuthorityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/AuthorityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CattegoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CattegoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeCattegoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeCattegoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/RecipeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/TagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arkpas/culinaryblog/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domain/CattegoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/CattegoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domain/RateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/RateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domain/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/RecipeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domain/UserDetailsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/UserDetailsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domain/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/service/AuthorityServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/AuthorityServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/service/CattegoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/CattegoryServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/service/CommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/CommentServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/service/RateServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/RateServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/CattegoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/domainUnitTests/CattegoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/RateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/domainUnitTests/RateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/domainUnitTests/RecipeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/UserDetailsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/domainUnitTests/UserDetailsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/domainUnitTests/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/domainUnitTests/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceIntegrationTests/UserServiceIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/integrationTests/serviceIntegrationTests/UserServiceIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/AuthorityServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/AuthorityServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/CattegoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/CattegoryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/CommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/CommentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/RateServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/RateServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/RecipeCattegoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/RecipeCattegoryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/RecipeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/RecipeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/TagServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/TagServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/serviceUnitTests/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arkpas/culinaryblog/unitTests/serviceUnitTests/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/application/Starter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CattegoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CattegoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/CommentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/RecipeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/Recipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CattegoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CattegoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeCattegoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeCattegoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/RecipeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/TagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/TagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domain/CattegoryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domain/RateTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domain/RecipeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domain/UserDetailsTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domain/UserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/service/AuthorityServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/service/CattegoryServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/service/CommentServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/service/RateServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/AuthorityRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/AuthorityRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/CommentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/CommentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/CommentRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/CommentRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/RecipeCattegoryRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/TagRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/TagRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/TagRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/TagRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/UserRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arkpas/culinaryblog/domain/repository/UserRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domainUnitTests/CattegoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domainUnitTests/RateTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domainUnitTests/RecipeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domainUnitTests/UserDetailsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/domainUnitTests/UserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceIntegrationTests/UserServiceIntegrationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/AuthorityServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/CattegoryServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/CommentServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/RateServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/RecipeCattegoryServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/RecipeServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/TagServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/arkpas/culinaryblog/serviceUnitTests/UserServiceTest.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,45 +135,44 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.arkpas.culinaryblog in culinaryblog">
-    <configuration name="CulinaryBlogMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.CulinaryBlogMain" />
+  <component name="RunManager" selected="JUnit.arkpas.culinaryblog.integrationTests in culinaryblog">
+    <configuration name="All in culinaryblog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="culinaryblog" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TagRepositoryIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="culinaryblog" />
-      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.serviceIntegrationTests" />
-      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.serviceIntegrationTests.UserServiceIntegrationTest" />
+      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.repositoryIntegrationTests" />
+      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.repositoryIntegrationTests.TagRepositoryIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="culinaryblog" />
-      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.unitTests.service" />
-      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.unitTests.service.UserServiceTest" />
+      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.repositoryIntegrationTests" />
+      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.repositoryIntegrationTests.UserRepositoryIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.addUserShouldCallAuthorityServiceMethodToCreateAuthority" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="arkpas.culinaryblog.integrationTests in culinaryblog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="culinaryblog" />
-      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.unitTests.service" />
-      <option name="MAIN_CLASS_NAME" value="arkpas.culinaryblog.unitTests.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="addUserShouldCallAuthorityServiceMethodToCreateAuthority" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.integrationTests" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="arkpas.culinaryblog in culinaryblog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="arkpas.culinaryblog.unitTests in culinaryblog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="culinaryblog" />
-      <option name="PACKAGE_NAME" value="arkpas.culinaryblog" />
+      <option name="PACKAGE_NAME" value="arkpas.culinaryblog.unitTests" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -200,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.arkpas.culinaryblog in culinaryblog" />
-        <item itemvalue="JUnit.UserServiceIntegrationTest" />
-        <item itemvalue="Application.CulinaryBlogMain" />
-        <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest.addUserShouldCallAuthorityServiceMethodToCreateAuthority" />
+        <item itemvalue="JUnit.arkpas.culinaryblog.integrationTests in culinaryblog" />
+        <item itemvalue="JUnit.arkpas.culinaryblog.unitTests in culinaryblog" />
+        <item itemvalue="JUnit.All in culinaryblog" />
+        <item itemvalue="JUnit.UserRepositoryIntegrationTest" />
+        <item itemvalue="JUnit.TagRepositoryIntegrationTest" />
       </list>
     </recent_temporary>
   </component>

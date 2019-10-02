@@ -15,30 +15,9 @@ public class CommentRepositoryImpl implements CommentRepository {
     EntityManager entityManager;
 
     @Override
-    public Comment getComment(int id) {
-        return entityManager.find(Comment.class, id);
-    }
-
-    @Override
-    public List<Comment> getCommentsByRecipe(int recipeId) {
-        return entityManager.createQuery("SELECT c FROM Comment AS c WHERE recipe_id = :recipeId", Comment.class).setParameter("recipeId", recipeId).getResultList();
-    }
-
-    @Override
     @Transactional
     public void saveComment(Comment comment) {
         entityManager.persist(comment);
     }
 
-    @Override
-    @Transactional
-    public void updateComment(Comment comment) {
-        entityManager.merge(comment);
-    }
-
-    @Override
-    @Transactional
-    public void removeComment(Comment comment) {
-        entityManager.remove(comment);
-    }
 }

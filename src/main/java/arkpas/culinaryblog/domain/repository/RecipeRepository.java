@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface RecipeRepository {
 
-    public Recipe getRecipe (int id);
-    public Recipe getRecipe (String name);
-    public List<Recipe> getRecipes ();
-    public List<Recipe> searchRecipes (String searchText);
-    public void saveRecipe (Recipe recipe);
-    public void updateRecipe (Recipe recipe);
-    public void removeRecipe(Recipe recipe);
+    Recipe getRecipe (int id);
+    Recipe getRecipe (String name);
+    List<Recipe> getRecipes ();
+    List<Recipe> searchRecipes (String searchText);
+    void saveRecipe (Recipe recipe);
+    void updateRecipe (Recipe recipe);
+    void removeRecipe(Recipe recipe);
 }

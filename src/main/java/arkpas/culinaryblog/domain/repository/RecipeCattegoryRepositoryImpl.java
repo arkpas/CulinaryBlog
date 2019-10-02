@@ -15,20 +15,9 @@ public class RecipeCattegoryRepositoryImpl implements RecipeCattegoryRepository 
     EntityManager entityManager;
 
     @Override
-    public RecipeCattegory getRecipeCattegory(int id) {
-        return entityManager.find(RecipeCattegory.class, id);
-    }
-
-    @Override
     public List<RecipeCattegory> getRecipeCattegoriesByCattegory(int cattegoryId) {
         return entityManager.createQuery("SELECT rc FROM RecipeCattegory AS rc WHERE cattegory_id = :cattegoryId", RecipeCattegory.class).setParameter("cattegoryId", cattegoryId).getResultList();
     }
-
-    @Override
-    public List<RecipeCattegory> getRecipeCattegoriesByRecipe(int recipeId) {
-        return entityManager.createQuery("SELECT rc FROM RecipeCattegory AS rc WHERE recipe_id = :recipeId", RecipeCattegory.class).setParameter("recipeId", recipeId).getResultList();
-    }
-
 
     @Override
     @Transactional
@@ -36,15 +25,4 @@ public class RecipeCattegoryRepositoryImpl implements RecipeCattegoryRepository 
         entityManager.persist(recipeCattegory);
     }
 
-    @Override
-    @Transactional
-    public void updateRecipeCattegory(RecipeCattegory recipeCattegory) {
-        entityManager.merge(recipeCattegory);
-    }
-
-    @Override
-    @Transactional
-    public void removeRecipeCattegory(RecipeCattegory recipeCattegory) {
-        entityManager.remove(recipeCattegory);
-    }
 }
