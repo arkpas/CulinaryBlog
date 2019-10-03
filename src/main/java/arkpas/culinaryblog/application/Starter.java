@@ -29,15 +29,18 @@ public class Starter implements CommandLineRunner {
 
     @Override
     public void run (String[] args) {
-        Recipe recipe = new Recipe();
-        recipe.setIngredients("Jabłko 5 szt \nWoda 2 litry");
-        recipe.setInstruction("Ugotuj jabłka w wodzie");
-        recipe.setName("Kompot");
-        recipe.setImageLink("https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2019/08/1065779-v-1080x1080.jpg");
-        recipeService.addRecipe(recipe);
+
+        for (int i = 0; i < 8; i++) {
+            Recipe recipe = new Recipe();
+            recipe.setIngredients("Jabłko 5 szt \nWoda 2 litry");
+            recipe.setInstruction("Ugotuj jabłka w wodzie");
+            recipe.setName("Kompot");
+            recipe.setImageLink("https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2019/08/1065779-v-1080x1080.jpg");
+            recipeService.addRecipe(recipe);
+        }
 
 
-        userService.addUser("arek", "123", "123", "blogger");
+        userService.addUser("blogger", "123", "123", "blogger");
 
 
         createDietCattegories();
@@ -134,6 +137,11 @@ public class Starter implements CommandLineRunner {
 
         cattegory = new Cattegory();
         cattegory.setName("zapiekanki");
+        cattegory.setCattegoryType(CattegoryType.MEAL);
+        cattegoryService.addCattegory(cattegory);
+
+        cattegory = new Cattegory();
+        cattegory.setName("inne");
         cattegory.setCattegoryType(CattegoryType.MEAL);
         cattegoryService.addCattegory(cattegory);
     }
