@@ -1,7 +1,6 @@
 # Culinary Blog
 
-![alt text](https://github.com/arkpas/CulinaryBlog/blob/master/presentation/culinarylanding.png)
-![alt text](https://github.com/arkpas/CulinaryBlog/blob/master/presentation/culinaryrecipe.png)
+![alt text](https://github.com/arkpas/CulinaryBlog/blob/master/presentation/culinaryblog.png)
 
 Culinary blog is a (you guessed it!) culinary blog engine - web application, which provides you with functionalities to add recipes, assign them tags and cattegories, and search recipes by these criteria. It also comes up with user registration and login system - users can comment and rate recipes and they have access to their profiles, where all their comments and rates are listed.
 
